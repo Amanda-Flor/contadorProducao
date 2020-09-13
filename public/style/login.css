@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    top: 0;
+}
+
+body{
+    background-color: #32AFB5;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: auto;
+}
+/* Logo */
+.logo-container{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    margin: 80px;
+}
+.logo-container img{
+    width: 300px;
+    height: 200px;
+}
+
+/* Login */
+.login{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    margin: auto;
+}
+label{
+    font-family: Poppins;
+    font-size: 1.2rem;
+    border-radius: 8px;
+}
+input{
+    height: 2rem;
+    width: 20rem;
+    border-radius: 8px;
+}
+.button{
+    margin: 0.2rem;
+    font-size: 2rem;
+    font-family: Poppins;
+}
+.login button{
+    height: 3rem;
+    width: 5rem;
+    border-radius: 8px;
+}

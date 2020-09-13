@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    top: 0;
+    font-size: 100%;
+}
+
+body{
+    background-color: #E5E5E5;
+}
+
+.logo{
+    margin: 0.2rem 5rem ;
+    height: 30px;
+    width: 40px;
+}
+
+/* Header */
+header{
+    position: fixed;
+    background-color:#32AFB5;
+    height: 2.5rem;
+    width: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* segundo posicionamento na pagina  */
+    z-index: 2;
+
+}
+
+/* Menu */
+nav{
+    position: fixed;
+    padding: 0.5rem;
+    position: fixed ;
+    height: 100%;
+    width: 20%;
+    background-color:#32AFB5;
+    /* primeiro posicionamento na pagina  */
+    z-index: 1;
+}
+
+/* Itens do Menu */
+.menu{
+    margin-top: 3rem;
+    display: grid;
+    grid-template-rows: 12;
+}
+.botao-menu{
+    background-color: #FFFFFF;
+    margin: 0.1rem;
+    border-radius: 8px;
+}
+a{
+    text-decoration: none;
+}
+.img-menu{
+    display: inline-flex;
+    height: 15px;
+    width: 15px;
+    margin: 0.5rem
+}
+.text-menu{
+    display: inline-flex;
+    width: 70%;
+    font-family: Poppins;
+    font-size: 0.6rem;
+    color: #32264D;
+}
+#menu-home{
+    grid-row-start: 2;
+    grid-row-end: 3; 
+}
+#menu-funcionarios{
+    grid-row-start: 3;
+    grid-row-end: 4; 
+}
+#menu-clientes{
+    grid-row-start: 4;
+    grid-row-end: 5; 
+}
+#menu-maquinas{
+    grid-row-start: 5;
+    grid-row-end: 6; 
+}
+#menu-produtos{
+    grid-row-start: 6;
+    grid-row-end: 7; 
+}
+#menu-pedidos{
+    grid-row-start: 7;
+    grid-row-end: 8; 
+}
+#menu-ordemProducao{
+    grid-row-start: 8;
+    grid-row-end: 9; 
+}
+#menu-producao{
+    grid-row-start: 9;
+    grid-row-end: 10; 
+}
+#menu-relatorios{
+    grid-row-start: 10;
+    grid-row-end: 11; 
+}
+#menu-informacoes{
+    grid-row-start: 11;
+    grid-row-end: 12; 
+}
+#menu-sair{
+    grid-row-start: 12;
+    grid-row-end: 13; 
+    background-color: #F22B29;
+}
+#menu-sair .text-menu{
+    color: #FFFFFF;
+}
+
+section{
+    margin-left: 22.5%;
+    margin-top: 3rem;
+    margin-right: 1rem;
+}
+
