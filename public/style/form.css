@@ -1,0 +1,143 @@
+form{
+    margin: 1rem;
+}
+label{
+    font-size: 1rem;
+    font-family: Poppins;
+    color:  #32264D;
+}
+input, select, option{
+    background-color: #FAFAFC;
+    border: 1px solid #E6E6F0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+}
+.campo-form{
+    margin:0.5rem;
+}
+.botao-form{
+    background-color: #04D361;
+    margin-left: 86%;
+    font-size: 1.2rem;
+    font-family: Poppins;
+    color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    width: 8rem;
+    height: 2rem;
+    margin-right: 0.2rem;
+    margin-top: 1rem;
+}
+
+footer{
+    background: #FFFFFF;
+    border: 1px solid #E6E6F0;
+    box-sizing: border-box;
+    border-radius: 0px 0px 8px 8px;
+    padding: 1rem 3rem 1rem 3rem;
+    margin-bottom: 3rem;
+}
+.informativo{
+    font-size: 1rem;
+    font-family: Poppins;
+    color: #32264D;
+    text-align: center;
+}
+/*2 inputs em uma linha*/
+.ciclo-form-maquina, .cavidade-form-maquina, .value-pedido, .infoPedido-op{
+    display: flex;
+}
+.info-pedido{
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+}
+#numero-cavidade-maquina, #cavidade-uso-maquina, #ciclo-form-maquina, #ciclo-uso-form-maquina, #codProduto-value-pedido, #quantProduto-pedido{
+    width: 100%;
+}
+
+/*Configuração de radios*/
+
+#rotuladeira, #sopradora, #sim, #nao{
+    width:5%;
+    margin-left: 0.5rem;
+}
+.rotuladeira, .rotulagem{
+    display: flex;
+    margin: 0.5rem;
+    width: 50%;
+    margin-left: 1rem;
+}
+.text-radio{
+    padding-top: 0.5rem;
+    margin-left: 1rem;
+}
+
+.search-form{
+    position: relative;  /* cria o contexto de posicionamento do botão */ 
+    margin-bottom: 3rem;
+}
+.input-search-form {
+      width: 100%;
+      padding: 10px;
+}
+  .button-search-form {
+    position: absolute;   
+    top: 0; 
+    right: 0;
+    background-color: #32AFB5;
+    font-size: 0.8rem;
+    font-family: Poppins;
+    color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 0rem 1rem 0rem 1rem;
+}
+
+/*formatação de tabela*/
+
+th, td, tr, .thead, table{
+    border: 1px #32264D solid;
+}
+.thear {
+    width: 100%;
+    height: 4rem;
+    font-size: 1.5rem;
+    background-color: #E6E6F0;
+    font-size: 2rem;
+}
+.th-table{
+    width: 20rem;
+    text-align: end;
+    padding-right: 0.3rem;
+}
+.td-table{
+    width: 20rem;
+    text-align: left;
+    padding-left: 1rem;
+    height: 1.8rem;
+}
+table{
+    margin-bottom: 2rem;
+}
+
+.produtos-pedido{
+    width: 100%;
+}
+.botao-relatorio{
+    background-color: #F22B29;
+    font-size: 1.2rem;
+    font-family: Poppins;
+    color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    text-align: center;
+    margin: 0.1rem 0.2rem 0.1rem 0.2rem;
+}
+#selecionar{
+    background-color: #04D361;
+    font-size: 0.8rem;
+}
+

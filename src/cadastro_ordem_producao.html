@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PI1A5 - Home</title>
+
+    <link rel="stylesheet" href="../public/style/form.css">
+    <link rel="stylesheet" href="../public/style/calendario.css">
+    <link rel="stylesheet" href="../../public/style/main.css">      
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+</head>
+<body class="container">
+
+    <!-- Cabeçalho-->
+    <header>
+      <img class="logo" src="../../public/img/logo.png" alt="Logo">
+    </header>
+    
+    <!--Menu-->
+    <nav>
+      <div class="menu">
+        <a class="botao-menu" id="menu-home" href="../src/home.html">
+          <img class="img-menu" src="../../public/img/home.png" alt="Opção Home">
+          <p class="text-menu">Home</p>
+        </a>
+        <a class="botao-menu" id="menu-funcionarios" href="../src/funcionario.html">
+          <img class="img-menu" src="../../public/img/funcionario.png" alt="Opção Funcionários">
+          <p class="text-menu">Funcionários</p>
+        </a>
+        <a class="botao-menu" id="menu-clientes" href="../src/cliente.html">
+          <img class="img-menu" src="../../public/img/cliente.png" alt="Opção Clientes">
+          <p class="text-menu">Clientes</p>
+        </a>
+        <a class="botao-menu" id="menu-maquinas" href="../src/maquina.html">
+          <img class="img-menu" src="../../public/img/maquina.png" alt="Opção Máquinas">
+          <p class="text-menu">Máquinas</p>
+        </a>
+        <a class="botao-menu" id="menu-produtos" href="../src/produto.html">
+          <img class="img-menu" src="../../public/img/produto.png" alt="Opção Produtos">
+          <p class="text-menu">Produtos</p>
+        </a>
+        <a class="botao-menu" id="menu-pedidos" href="../src/pedido.html">
+          <img class="img-menu" src="../../public/img/pedido.png" alt="Opção Pedidos">
+          <p class="text-menu">Pedidos</p>
+        </a>
+        <a class="botao-menu" id="menu-ordemProducao" href="../src/ordem_producao.html">
+          <img class="img-menu" src="../../public/img/ordemProducao.png" alt="Opção Ordem de Produção">
+          <p class="text-menu">Ordem de Produção</p>
+        </a>
+        <a class="botao-menu" id="menu-producao" href="../src/producao.html">
+          <img class="img-menu" src="../../public/img/producao.png" alt="Opção Produção">
+          <p class="text-menu">Produção</p>
+        </a>
+        <a class="botao-menu" id="menu-relatorios" href="../src/relatorios.html">
+          <img class="img-menu" src="../../public/img/relatório.png" alt="Opção Relatórios">
+          <p class="text-menu">Relatórios</p>
+        </a>
+        <a class="botao-menu" id="menu-informacoes" href="../src/informacoes.html">
+          <img class="img-menu" src="../../public/img/info.png" alt="Opção Informações">
+          <p class="text-menu">Informações</p>
+        </a>
+        <a class="botao-menu" id="menu-sair" href="../src/login.html">
+          <img class="img-menu" src="../../public/img/sair.png" alt="Opção Sair">
+          <p class="text-menu">Sair</p>
+        </a>
+      </div>
+    </nav>
+
+    <!--Corpo do site-->
+    <div class="section">
+      <h3>Ordem de Produção</h3>
+      <div class="dashboard">
+        <form action="">
+          <h4>1 Passo - Dados do Pedido</h4>
+          <form action="">
+            <label for="busca">Código do Pedido:</label>
+            <div class="search-form">
+              <input class="input-search-form" type="search" id="busca" name="q">
+              <button class="button-search-form" type="submit">
+                <img class="img-menu" src="../public/img/lupa.png" alt="pesquisar">
+              </button>
+            </div>
+          </form>
+
+          <h4>2 Passo - Seleção do Produto</h4>
+          <form action="">
+            <label for="busca">Código do Produto:</label>
+            <table class="produtos-pedido">
+              <tr>
+                <th>Cód. do Produto</th>
+                <th>Nome do Produto</th>
+                <th>Rotulagem</th>
+                <th>Quantidade</th>
+                <th> </th>
+              </tr>
+              <tr>
+                <td>*****</td>
+                <td>*****</td>
+                <td>*****</td>
+                <td>*****</td>
+                <td>
+                  <div class="botao-relatorio" id="selecionar">Selecionar</div>
+                </td>
+              </tr>
+              <tr>
+                <td>*****</td>
+                <td>*****</td>
+                <td>*****</td>
+                <td>*****</td>
+                <td>
+                  <div class="botao-relatorio" id="selecionar">Selecionar</div>
+                </td>
+              </tr>
+            </table>
+          </form>
+
+          <h4>3 Passo - Agendamento da Produção</h4>
+          <form action="">
+            <div class="infoPedido-op">
+              <div class="campo-form" id="numero-cavidade-maquina">
+                <label for="numero-cavidade-maquina">Código do Produto:</label>
+                <input type="text" id="numero-cavidade-maquina" />
+              </div>
+              <div class="campo-form" id="cavidade-uso-maquina">
+                <label for="cavidade-uso-maquina">Código da Máquina:</label>
+                <input type="text" id="cavidade-uso-maquina" />
+              </div>
+              <div class="campo-form" id="cavidade-uso-maquina">
+                <label for="cavidade-uso-maquina">Dias de Produção:</label>
+                <input type="text" id="cavidade-uso-maquina" />
+              </div>
+            </div>
+  
+            <table class="calendario">
+              <caption class="ano">2020</caption>
+              <thead>
+                <tr>
+                  <th>Dia da Semana</th>
+                  <td class="dia">1</td>
+                  <td class="dia">2</td>
+                  <td class="dia">3</td>
+                  <td class="dia">4</td>
+                  <td class="dia">5</td>
+                  <td class="dia">6</td>
+                  <td class="dia">7</td>
+                  <td class="dia">8</td>
+                  <td class="dia">9</td>
+                  <td class="dia">10</td>
+                  <td class="dia">11</td>
+                  <td class="dia">12</td>
+                  <td class="dia">13</td>
+                  <td class="dia">14</td>
+                  <td class="dia">15</td>
+                  <td class="dia">16</td>
+                  <td class="dia">17</td>
+                  <td class="dia">18</td>
+                  <td class="dia">19</td>
+                  <td class="dia">20</td>
+                  <td class="dia">21</td>
+                  <td class="dia">22</td>
+                  <td class="dia">23</td>
+                  <td class="dia">24</td>
+                  <td class="dia">25</td>
+                  <td class="dia">26</td>
+                  <td class="dia">27</td>
+                  <td class="dia">28</td>
+                  <td class="dia">29</td>
+                  <td class="dia">30</td>
+                  <td class="dia">31</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th class>Janeiro</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Fevereiro</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Março</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Abril</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Maio</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Junho</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Julho</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Agosto</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Setembro</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Outubro</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Novembro</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+                <tr>
+                  <th>Dezembro</th>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                  <td class="dia"> </td>
+                </tr>
+              </tbody>
+            </table>
+  
+            <div class="infoPedido-op">
+              <div class="campo-form" id="inicio-op">
+                <label for="inicio-op">Inicialização:</label>
+                <input type="date" id="inicio-op" />
+              </div>
+              <div class="campo-form" id="final-op">
+                <label for="final-op">Finalização:</label>
+                <input type="date" id="final-op" />
+              </div>
+            </div>
+  
+            <button class="botao-form" type="submit">Salvar</button>
+          </form>
+        </form>
+      </div>
+      <footer>
+        <div class="informativo">
+          Importante! <br> Preencha todos os dados 
+        </div>
+      </footer>
+    </div>
+    
+  </body>
+</html>

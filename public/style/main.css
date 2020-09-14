@@ -48,77 +48,134 @@ nav{
 }
 .botao-menu{
     background-color: #FFFFFF;
+    display: inline-block;
     margin: 0.1rem;
     border-radius: 8px;
+    vertical-align: middle;
 }
 a{
     text-decoration: none;
 }
 .img-menu{
     display: inline-flex;
-    height: 15px;
-    width: 15px;
-    margin: 0.5rem
+    height: 20px;
+    width: 20px;
+    margin: 0.4rem 0.4rem 0.4rem 0.4rem;
 }
 .text-menu{
     display: inline-flex;
-    width: 70%;
     font-family: Poppins;
-    font-size: 0.6rem;
+    font-size: 1rem;
     color: #32264D;
+    margin-bottom: 1rem;
 }
 #menu-home{
     grid-row-start: 2;
-    grid-row-end: 3; 
+    grid-row-end: 3;
 }
 #menu-funcionarios{
     grid-row-start: 3;
-    grid-row-end: 4; 
+    grid-row-end: 4;
 }
 #menu-clientes{
     grid-row-start: 4;
-    grid-row-end: 5; 
+    grid-row-end: 5;
 }
 #menu-maquinas{
     grid-row-start: 5;
-    grid-row-end: 6; 
+    grid-row-end: 6;
 }
 #menu-produtos{
     grid-row-start: 6;
-    grid-row-end: 7; 
+    grid-row-end: 7;
 }
 #menu-pedidos{
     grid-row-start: 7;
-    grid-row-end: 8; 
+    grid-row-end: 8;
 }
 #menu-ordemProducao{
     grid-row-start: 8;
-    grid-row-end: 9; 
+    grid-row-end: 9;
 }
 #menu-producao{
     grid-row-start: 9;
-    grid-row-end: 10; 
+    grid-row-end: 10;
 }
 #menu-relatorios{
     grid-row-start: 10;
-    grid-row-end: 11; 
+    grid-row-end: 11;
 }
 #menu-informacoes{
     grid-row-start: 11;
-    grid-row-end: 12; 
+    grid-row-end: 12;
 }
 #menu-sair{
     grid-row-start: 12;
-    grid-row-end: 13; 
+    grid-row-end: 13;
     background-color: #F22B29;
 }
 #menu-sair .text-menu{
     color: #FFFFFF;
 }
 
-section{
+.section{
     margin-left: 22.5%;
     margin-top: 3rem;
     margin-right: 1rem;
+    margin-bottom: 3rem;
+    /* display: flex; */
+}
+
+/* Titulo */
+h3{
+    font-size: 1.8rem;
+    color:#32264D;
+    font-family: Poppins;
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #C1BCCC;
+}
+/* menu-section */
+.menu-section{
+    display: inline-flex;
+    margin-bottom: 1rem;
+    margin-left: 32%;
+    width: 100%;
+}
+.botao{
+    font-size: 1.2rem;
+    font-family: Poppins;
+    color: #32264D;
+    background-color: #32AFB5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    width: 8rem;
+    height: 2rem;
+    margin-right: 0.2rem;
+}
+.text-button{
+    font-size: 1rem;
+    font-family: Poppins;
+    color:#32264D;
+    text-align: center;
+    height: 2rem;
+    padding-top: 0.3rem;
+}
+/*Corpo da Página*/
+.dashboard{
+    background: #FFFFFF;
+    border: 1px solid #E6E6F0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 1rem 3rem 1rem 3rem;
+    /* padding-left: 3rem;
+    padding-right: 3rem; */
+}
+h4 {
+    margin: 1rem 1rem 2rem 1rem;
+    font-size: 1.2rem;
+    color:#32264D;
+    font-family: Poppins;
+    border-bottom: 1px solid #C1BCCC;
 }
 

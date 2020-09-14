@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PI1A5 - Home</title>
 
-
-    <link rel="stylesheet" href="../public/style/main.css">      
+    <link rel="stylesheet" href="../public/style/form.css">
+    <link rel="stylesheet" href="../../public/style/main.css">      
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
 </head>
 <body class="container">
 
     <!-- Cabeçalho-->
     <header>
-      <img class="logo" src="../public/img/logo.png" alt="Logo">
+      <img class="logo" src="../../public/img/logo.png" alt="Logo">
     </header>
     
     <!--Menu-->
@@ -69,15 +69,45 @@
 
     <!--Corpo do site-->
     <div class="section">
-      <h3>Home - Contador de Produção</h3>
+      <h3>Cadastro de Produto</h3>
+      <div class="dashboard">
+        <h4>Dados do Produto</h4>
+        <form action="">
+          <div class="campo-form">
+            <label for="nome-produto">Nome do Produto:</label>
+            <input type="text" id="nome-produto" />
+          </div>
+          <div class="campo-form">
+            <label for="materia-produto">Matéria Prima:</label>
+            <input type="text" id="materia-produto" />
+          </div>
+          <div class="campo-form">
+            <label for="quantLote-produto">Quantidade por Lote:</label>
+            <input type="text" id="quantLote-produto" />
+          </div>
+          <div class="campo-form">
+            <label for="cnpjCliente-produto">CNPJ do Cliente:</label>
+            <select name="cnpjCliente-produto">
+              <option value=""></option>
+            </select>
+          </div>
+          <div class="campo-form">
+            <label for="codProdutora-produto">Código da máquina produtora:</label>
+            <select name="codProdutora-produto">
+              <option value=""></option>
+            </select>
+          </div>
+          
+          <button class="botao-form" type="submit">Salvar</button>
+        </form>
+      </div>
+
+      <footer>
+        <div class="informativo">
+          Importante! <br> Preencha todos os dados 
+        </div>
+      </footer>
     </div>
 
   </body>
 </html>
-
-    <!-- Exemplo de folhas para cada tamanho de tela -->
-    <!-- <link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen.css">
-    <link rel="stylesheet" media="screen and (max-width: 600px)" href="smallscreen.css">   -->
-
-
-    <!-- <link href="../styles/menu.css" rel="stylesheet"> -->

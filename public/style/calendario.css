@@ -1,0 +1,20 @@
+.ano {
+    font: 1.2rem Poppins;
+    background: #FFFFFF;
+    text-align: center;
+    height: 2rem;
+    width: 100%;
+    border-radius: 8px;
+}
+th {
+    font: bold 12px verdana;
+    background: #FFFFFF;
+    text-align: center;
+}
+.dia {
+    background: #FFFFFF;
+    font:  0.8rem Poppins;                   
+    text-align: center;
+    height: 25px;
+    width: 30px;
+}
