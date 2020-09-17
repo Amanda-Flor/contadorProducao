@@ -31,7 +31,6 @@ module.exports = {
                 nivel_acesso_funcionario,
                 cpf_funcionario
             }) 
-            console.log(nome_funcionarios)
             return res.render('funcionario.html')
 
         } catch (error){
