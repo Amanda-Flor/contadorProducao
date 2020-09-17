@@ -14,7 +14,8 @@ module.exports = {
                 data_inicio_pedido,
                 status_pedido,
                 cod_funcionario,
-                cod_cliente
+                cod_cliente,
+                status
             } = req.body
             await knex('pedidos').insert({
                 quantidade_produto_pedido,
@@ -22,7 +23,8 @@ module.exports = {
                 data_inicio_pedido,
                 status_pedido,
                 cod_funcionario,
-                cod_cliente
+                cod_cliente,
+                status
             })
 
             return res.status(201).send()
@@ -38,7 +40,8 @@ module.exports = {
                 data_inicio_pedido,
                 status_pedido,
                 cod_funcionario,
-                cod_cliente
+                cod_cliente,
+                status
             } = req.body
 
             const {cod_pedido} = req.params
@@ -50,7 +53,8 @@ module.exports = {
                 data_inicio_pedido,
                 status_pedido,
                 cod_funcionario,
-                cod_cliente
+                cod_cliente,
+                status
             })
             .where({cod_pedido})
 

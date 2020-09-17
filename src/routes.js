@@ -12,9 +12,71 @@ const OrdemProducaoController = require("./controllers/OrdemProducaoController")
 const PedidosProdutosController = require("./controllers/PedidosProdutosController")
 const ProducoesController = require("./controllers/ProducoesController")
 
+routes
+.get('/', function (req, res) {
+    res.render('login.html');
+})
+.get('/home', function(req, res) {
+    res.render('home.html');
+})
+.get('/maquina', function(req, res) {
+    res.render('maquina.html');
+})
+.get('/cliente', function(req, res) {
+    res.render('cliente.html');
+})
+.get('/produto', function(req, res) {
+    res.render('produto.html');
+})
+.get('/pedido', function(req, res) {
+    res.render('pedido.html');
+})
+.get('/ordemProducao', function(req, res) {
+    res.render('ordem_producao.html');
+})
+.get('/producao', function(req, res) {
+    res.render('producao.html');
+})
+.get('/relatorio', function(req, res) {
+    res.render('relatorio.html');
+})
+.get('/informacoes', function(req, res) {
+    res.render('informacoes.html');
+})
+.get('/CadastroCliente', function(req, res) {
+    res.render('cadastro_cliente.html');
+})
+.get('/CadastroProduto', function(req, res) {
+    res.render('cadastro_produto.html');
+})
+.get('/CadastroPedido', function(req, res) {
+    res.render('cadastro_pedido.html');
+})
+.get('/CadastroOrdemProducao', function(req, res) {
+    res.render('cadastro_ordem_producao.html');
+})
+.get('/ProducaoMaquina', function(req, res) {
+    res.render('producao_maquina.html');
+})
+.get('/ConsultaCliente', function(req, res) {
+    res.render('consulta_cliente.html');
+})
+.get('/ConsultaMaquina', function(req, res) {
+    res.render('consulta_maquina.html');
+})
+.get('/ConsultaPedido', function(req, res) {
+    res.render('consulta_pedido.html');
+})
+.get('/ConsultaProduto', function(req, res) {
+    res.render('consulta_produto.html');
+})
+.get('/ConsultaOrdemProducao', function(req, res) {
+    res.render('consulta_ordemProducao.html');
+})
+
 // CRUD Maquinas
 routes.get('/maquinas', MaquinasController.index)
-routes.post('/maquinas', MaquinasController.create)
+routes.post('/CadastroMaquina', MaquinasController.create)
 routes.put('/maquinas/:cod_maquina', MaquinasController.update)
 routes.delete('/maquinas/:cod_maquina', MaquinasController.delete)
 
@@ -24,9 +86,11 @@ routes.post('/clientes', ClientesController.create)
 routes.put('/clientes/:cod_cliente', ClientesController.update)
 routes.delete('/clientes/:cod_cliente', ClientesController.delete)
 
+
 // CRUD Funcionarios
-routes.get('/funcionarios', FuncionariosController.index)
-routes.post('/funcionarios', FuncionariosController.create)
+routes.get('/funcionario', function(req, res){ res.render('funcionario.html')})
+// routes.get('/funcionario', FuncionariosController.index)
+routes.post('/CadastroFuncionario', FuncionariosController.create)
 routes.put('/funcionarios/:cod_funcionario', FuncionariosController.update)
 routes.delete('/funcionarios/:cod_funcionario', FuncionariosController.delete)
 

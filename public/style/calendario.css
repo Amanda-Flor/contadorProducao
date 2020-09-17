@@ -1,5 +1,6 @@
 .ano {
-    font: 1.2rem Poppins;
+    font-size: 1.2rem;
+    font-family: Poppins;
     background: #FFFFFF;
     text-align: center;
     height: 2rem;
@@ -17,4 +18,5 @@ th {
     text-align: center;
     height: 25px;
     width: 30px;
+    text-align: center;
 }

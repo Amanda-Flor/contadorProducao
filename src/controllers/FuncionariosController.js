@@ -1,7 +1,10 @@
 const knex = require("../database")
 
 module.exports = {
-    async index (req, res){
+    async index(req, res) {
+        res.render('funcionario.html');
+    },
+    async index2 (req, res){
         const results = await knex("funcionarios")
 
         return res.json(results)
@@ -26,10 +29,11 @@ module.exports = {
                 naturalidade_funcionario,
                 sexo_funcionario,
                 nivel_acesso_funcionario,
-                cpf_funcionario,
-            })
+                cpf_funcionario
+            }) 
+            console.log(nome_funcionarios)
+            return res.render('funcionario.html')
 
-            return res.status(201).send()
         } catch (error){
             next(error)
         }

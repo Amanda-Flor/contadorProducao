@@ -47,14 +47,16 @@ footer{
     text-align: center;
 }
 /*2 inputs em uma linha*/
-.ciclo-form-maquina, .cavidade-form-maquina, .value-pedido, .infoPedido-op{
+.ciclo-form-maquina, .cavidade-form-maquina, .value-pedido, .infoPedido-op, #acesso{
     display: flex;
 }
-.info-pedido{
-    margin-left: 3rem;
-    margin-bottom: 2rem;
+.info, .produtos-pedido, .calendario{
+    margin: 0 auto;
+    font-size: 1rem;
+    font-family: Poppins;
+    color: #32264D;
 }
-#numero-cavidade-maquina, #cavidade-uso-maquina, #ciclo-form-maquina, #ciclo-uso-form-maquina, #codProduto-value-pedido, #quantProduto-pedido{
+#numero-cavidade-maquina, #cavidade-uso-maquina, #ciclo-form-maquina, #ciclo-uso-form-maquina, #codProduto-value-pedido, #quantProduto-pedido, #campo-acesso-email, #campo-acesso-senha{
     width: 100%;
 }
 
@@ -98,7 +100,7 @@ footer{
 
 /*formatação de tabela*/
 
-th, td, tr, .thead, table{
+th, td, tr, .thead, table, .calendario{
     border: 1px #32264D solid;
 }
 .thear {
@@ -106,7 +108,10 @@ th, td, tr, .thead, table{
     height: 4rem;
     font-size: 1.5rem;
     background-color: #E6E6F0;
-    font-size: 2rem;
+}
+.thear-calendario{
+    background-color: #E6E6F0;
+    font-size: 0.8rem;
 }
 .th-table{
     width: 20rem;
@@ -122,9 +127,13 @@ th, td, tr, .thead, table{
 table{
     margin-bottom: 2rem;
 }
-
+.calendario{
+    width: 100%;
+}
 .produtos-pedido{
     width: 100%;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
 }
 .botao-relatorio{
     background-color: #F22B29;
@@ -141,3 +150,14 @@ table{
     font-size: 0.8rem;
 }
 
+/* botão página consulta */
+.menu-consulta{
+    width: 100%;
+}
+#botao-desabilitar, #botao-editar{
+    margin-left: 0;
+
+}
+#botao-desabilitar{
+    background-color: #F22B29;
+}

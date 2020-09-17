@@ -123,7 +123,6 @@ a{
     margin-top: 3rem;
     margin-right: 1rem;
     margin-bottom: 3rem;
-    /* display: flex; */
 }
 
 /* Titulo */
@@ -156,20 +155,19 @@ h3{
 .text-button{
     font-size: 1rem;
     font-family: Poppins;
-    color:#32264D;
+    color:#FFFFFF;
     text-align: center;
     height: 2rem;
     padding-top: 0.3rem;
 }
 /*Corpo da Página*/
-.dashboard{
+.dashboard, .dashboard-dadosFuncionario, .dashboard-dadosAcesso, .formulario{
     background: #FFFFFF;
     border: 1px solid #E6E6F0;
     box-sizing: border-box;
     border-radius: 8px;
     padding: 1rem 3rem 1rem 3rem;
-    /* padding-left: 3rem;
-    padding-right: 3rem; */
+    margin-bottom: 1rem;
 }
 h4 {
     margin: 1rem 1rem 2rem 1rem;
@@ -178,4 +176,28 @@ h4 {
     font-family: Poppins;
     border-bottom: 1px solid #C1BCCC;
 }
+
+.itens-dashboard{
+    display:flex;
+    justify-content: space-between;
+}
+
+.cod{
+    margin-right: 5rem;
+}
+
+/*formatação de tabela do perfil*/
+
+.tabela-perfil{
+    width: 20rem;
+    height: 1.5rem;
+    text-align: end;
+    padding-right: 0.3rem;
+    font-size: 1rem;
+    font-family: Poppins;
+    color:  #32264D;
+    border: none;
+    margin-left: 4rem;
+}
+
 
