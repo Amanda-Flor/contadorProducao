@@ -1,35 +1,57 @@
 const knex = require("../database")
 
 module.exports = {
-    async index(req, res) {
-        res.render('funcionario.html');
-    },
-    async index2 (req, res){
-        const results = await knex("funcionarios")
 
-        return res.json(results)
+    //Pesquisa Funcionario
+    async search(req, res) {
+
+        const{codFuncionario} = req.body
+
+        const dadosFuncionario = await knex('funcionarios')
+        .where({cod_funcionario:codFuncionario})
+        .select('funcionarios.*');
+        console.log(dadosFuncionario)
+
+        // const{
+        //     cod_funcionario,
+        //     nome_funcionarios,
+        //     telefone_funcionario,
+        //     data_nascimento_funcionario,
+        //     cep_funcionario,
+        //     naturalidade_funcionario,
+        //     sexo_funcionario,
+        //     nivel_acesso_funcionario,
+        //     cpf_funcionario,
+        // } = dadosFuncionario[0]
+
+        console.log(dadosFuncionario[0])
+
+        return res.render('cadastro_funcionario.html', { cod_funcionario, nome_funcionarios, telefone_funcionario, data_nascimento_funcionario,  cep_funcionario, naturalidade_funcionario, sexo_funcionario, nivel_acesso_funcionario, cpf_funcionario });
     },
+
+    //Cadastro Funcionario
     async create(req, res, next) {
         try{
             const {
-                nome_funcionarios,
-                telefone_funcionario,
-                data_nascimento_funcionario,
-                cep_funcionario,
-                naturalidade_funcionario,
-                sexo_funcionario,
-                nivel_acesso_funcionario,
-                cpf_funcionario,
-            } = req.body
+                nomeFuncionario,
+                telefoneFuncionario,
+                dataNascimentoFuncionario,
+                cepFuncionario,
+                naturalidadeFuncionario,
+                sexoFuncionario,
+                nivelAcessoFuncionario,
+                cpfFuncionario,
+            } = req.body;
+
             await knex('funcionarios').insert({
-                nome_funcionarios,
-                telefone_funcionario,
-                data_nascimento_funcionario,
-                cep_funcionario,
-                naturalidade_funcionario,
-                sexo_funcionario,
-                nivel_acesso_funcionario,
-                cpf_funcionario
+                nome_funcionarios: nomeFuncionario,
+                telefone_funcionario: telefoneFuncionario,
+                data_nascimento_funcionario: dataNascimentoFuncionario,
+                cep_funcionario:  cepFuncionario,
+                naturalidade_funcionario: naturalidadeFuncionario,
+                sexo_funcionario: sexoFuncionario,
+                nivel_acesso_funcionario: nivelAcessoFuncionario,
+                cpf_funcionario: cpfFuncionario,
             }) 
             return res.render('funcionario.html')
 

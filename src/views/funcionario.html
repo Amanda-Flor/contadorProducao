@@ -119,25 +119,16 @@
               <td class='tabela-perfil'></td>
             </tr>
           </table>
-          <div class="cod">
-            <label for="cod-funcionario">Código do Funcionário:</label>
-            <input type="text" id="cod-funcionario" />
-          </div>
+          <form action="pesquisaFuncionario" method="POST">
+            <div class="cod">
+              <label for="cod-funcionario">Código do Funcionário:</label>
+              <input type="text" id="cod-funcionario" name="codFuncionario"/>
+            </div>
+            <button class="botao-form" type="submit">Pesquisar</button>
+          </form>
+          
         </div>
         
-      </div>
-      <div class="dashboard-dadosAcesso">
-        <h4>Dados de Acesso</h4>
-        <form id="acesso" action="">
-          <div class="campo-form" id="campo-acesso-email">
-            <label for="email-funcionario">Email:</label>
-            <input type="email" id="email-funcionario" />
-          </div>
-          <div class="campo-form" id="campo-acesso-senha">
-            <label for="senha-funcionario">Senha:</label>
-            <input type="password" id="senha-funcionario" />
-          </div>
-        </form>
       </div>
     </div>
 

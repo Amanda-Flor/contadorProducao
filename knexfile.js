@@ -5,9 +5,10 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      database: "contadorproducao",
+      host: '127.0.0.1',
       user: "root",
-      password: ""
+      password: "",
+      database: "contadorproducao"
     },
     seeds: {
       directory: `${__dirname}/src/database/seeds`

@@ -73,12 +73,12 @@
       <h3>Consulta de Produto</h3>
       <div class="dashboard">
         <h4>Pesquisa de Produto</h4>
-        <form action="">
+        <form action="/pesquisaProduto" method="POST">
           <label for="busca">Código da Produto:</label>
           <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="q">
+            <input class="input-search-form" type="search" id="busca" name="codProduto">
             <button class="button-search-form" type="submit">
-              <img class="img-menu" src="../../public/img/lupa.png" alt="pesquisar">
+              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
           </div>
         </form>
@@ -91,18 +91,33 @@
               </tr>
               <tr>
                 <th class="th-table">Código do Produto:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{cod_produto}}</td>
               </tr>
               <tr>
                 <th class="th-table">Nome do Produto:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{nome_produto}}</td>
+              </tr>
+              <tr>
+                <th class="th-table">Matéria Prima:</th>
+                <td class="td-table">{{materia_prima_produto}}</td>
+              </tr>
+              <tr>
+                <th class="th-table">Quantidade por Lote:</th>
+                <td class="td-table">{{quantidade_lote_produto}}</td>
+              </tr>
+              <tr>
+                <td class="td-table" colspan="2"> </td>
+              </tr>
+              <tr>
+                <th class="th-table">Máquina Produtora:</th>
+                <td class="td-table">{{cod_maquina}}</td>
               </tr>
               <tr>
                 <td class="td-table" colspan="2"> </td>
               </tr>
               <tr>
                 <th class="th-table">Nome do Cliente:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{cod_cliente}}</td>
               </tr>
               <tr>
                 <th class="th-table">Email:</th>

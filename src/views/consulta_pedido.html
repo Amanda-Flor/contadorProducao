@@ -73,12 +73,12 @@
       <h3>Consulta de Pedidos</h3>
       <div class="dashboard">
         <h4>Pesquisa de Pedidos Aprovados</h4>
-        <form action="">
+        <form action="/pesquisaPedido" method="POST">
           <label for="busca">Código do Pedido:</label>
           <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="q">
+            <input class="input-search-form" type="search" id="busca" name="codPedido">
             <button class="button-search-form" type="submit">
-              <img class="img-menu" src="../../public/img/lupa.png" alt="pesquisar">
+              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
           </div>
         </form>
@@ -91,30 +91,30 @@
               </tr>
               <tr>
                 <th class="th-table">Número do Pedido:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ CodPedido }}</td>
               </tr>
               <tr>
                 <th class="th-table">Empresa:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ nomeEmpresa }}</td>
               </tr>
               <tr>
                 <th class="th-table">E-mail:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ emailEmpresa }}</td>
               </tr>
               <tr>
                 <th class="th-table">Telefone:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ telefoneEmpresa }}</td>
               </tr>
               <tr>
                 <td class="td-table" colspan="2"> </td>
               </tr>
               <tr>
                 <th class="th-table">Responsável:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ nomeFuncionrio }}</td>
               </tr>
               <tr>
                 <th class="th-table">Data de Solicitação:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ dataSolicitacao }}</td>
               </tr>
             </table>
   
@@ -127,19 +127,19 @@
                 <th> </th>
               </tr>
               <tr>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
+                <td>{{codProduto[0]}}</td>
+                <td>{{nomeProduto[0]}}</td>
+                <td>{{rotulagem[0]}}</td>
+                <td>{{quantidade[0]}}</td>
                 <td>
                   <div class="botao-relatorio">Excluir</div>
                 </td>
               </tr>
               <tr>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
+                <td>{{codProduto[1]}}</td>
+                <td>{{nomeProduto[1]}}</td>
+                <td>{{rotulagem[1]}}</td>
+                <td>{{quantidade[1]}}</td>
                 <td>
                   <div class="botao-relatorio">Excluir</div>
                 </td>

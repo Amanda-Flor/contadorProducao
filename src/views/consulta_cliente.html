@@ -72,10 +72,13 @@
       <h3>Consulta de Cliente</h3>
       <div class="dashboard">
         <h4>Pesquisa de Cliente</h4>
-        <form action="">
+
+        
+
+        <form action="/pesquisaCliente" method="POST">
           <label for="busca">Código de Cliente:</label>
           <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="q">
+            <input class="input-search-form" type="search" id="busca" name="codCliente" value="{{ cod_cliente }}">
             <button class="button-search-form" type="submit">
               <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
@@ -90,19 +93,23 @@
               </tr>
               <tr>
                 <th class="th-table">Código do Cliente:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ cod_cliente }}</td>
               </tr>
               <tr>
                 <th class="th-table">Nome do Cliente:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ nome_cliente }}</td>
               </tr>
               <tr>
                 <th class="th-table">E-mail:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ email_cliente }}</td>
               </tr>
               <tr>
                 <th class="th-table">Telefone:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ telefone_cliente }}</td>
+              </tr>
+              <tr>
+                <th class="th-table">CNPJ:</th>
+                <td class="td-table">{{ cpnj_cliente }}</td>
               </tr>
             </table>
           </div>

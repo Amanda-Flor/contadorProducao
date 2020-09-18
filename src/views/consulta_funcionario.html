@@ -7,8 +7,8 @@
     <title>PI1A5 - Home</title>
 
 
-      <link rel="stylesheet" href="/public/style/main.css">
-      <link rel="stylesheet" href="/public/style/form.css">      
+      <link rel="stylesheet" href="/style/main.css">
+      <link rel="stylesheet" href="/style/form.css">      
       <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
   </head>
   <body class="container">
@@ -73,40 +73,62 @@
       <h3>Consulta de Funcionários</h3>
       <div class="dashboard">
         <h4>Pesquisa de Funcionario</h4>
-        <form action="">
-          <label for="busca">Código de Funcionario:</label>
+
+        <form action="/pesquisaFuncionario" method="POST">
+          <label for="busca">Código do Funcionario:</label>
           <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="q">
+            <input class="input-search-form" type="search" id="busca" name="codFuncionario">
             <button class="button-search-form" type="submit">
               <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
           </div>
         </form>
         <h4>Resultado da Pesquisa</h4>
+        <div class="relatorio">
+          <table class="info">
+            <tr class="thear">
+              <th colspan="2">Dados do Funcionário</th> 
+            </tr>
+            <tr>
+              <th class="th-table">Código do Funcionário:</th>
+              <td class="td-table">{{ cod_funcionario }}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Nome do Funcionário:</th>
+              <td class="td-table">{{ nome_funcionario }}</td>
+            </tr>
+            <tr>
+              <th class="th-table">CPF:</th>
+              <td class="td-table">{{ cpfFuncionario }}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Telefone:</th>
+              <td class="td-table">{{ telefone_funcionario }}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Data de Nascimento:</th>
+              <td class="td-table">{{ dataNascimentoFuncionario }}</td>
+            </tr>
+            <tr>
+              <th class="th-table">CEP Residencial:</th>
+              <td class="td-table">{{ cepFuncionario }}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Naturalidade:</th>
+              <td class="td-table">{{ naturalidadeFuncionario }}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Sexo:</th>
+              <td class="td-table">{{ sexoFuncionario }}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Nível de Acesso:</th>
+              <td class="td-table">{{ nivelAcessoFuncionario }}</td>
+            </tr>
+            
+          </table>
         <form action="">
-          <div class="relatorio">
-            <table class="info">
-              <tr class="thear">
-                <th colspan="2">Dados do Funcionário</th> 
-              </tr>
-              <tr>
-                <th class="th-table">Código do Funcionário:</th>
-                <td class="td-table">*****</td>
-              </tr>
-              <tr>
-                <th class="th-table">Nome do Funcionário:</th>
-                <td class="td-table">*****</td>
-              </tr>
-              <tr>
-                <th class="th-table">E-mail:</th>
-                <td class="td-table">*****</td>
-              </tr>
-              <tr>
-                <th class="th-table">Telefone:</th>
-                <td class="td-table">*****</td>
-              </tr>
-            </table>
-          </div>
+          
   
           <div class="menu-consulta">
             <button id="botao-desabilitar" class="botao-form" type="submit">Desabilitar</button>

@@ -72,44 +72,44 @@
     <h3>Cadastro de Máquina</h3>
     <div class="formulario">
       <h4>Dados da Máquina</h4>
-      <form action="">
+      <form action="salvarMaquina" method="POST">
         <div class="campo-form">
           <label for="nome-maquina">Nome da Máquina:</label>
-          <input type="text" id="nome-maquina" />
+          <input type="text" id="nome-maquina" name="nomeMaquina"/>
         </div>
         <div class="cavidade-form-maquina">
           <div class="campo-form" id="numero-cavidade-maquina">
             <label for="numero-cavidade-maquina">Quant. de Cavidades:</label>
-            <input type="text" id="numero-cavidade-maquina" />
+            <input type="text" id="numero-cavidade-maquina" nome="cavidadeMaquina" />
           </div>
           <div class="campo-form" id="cavidade-uso-maquina">
             <label for="cavidade-uso-maquina">Quant. de Cavidades em Uso:</label>
-            <input type="text" id="cavidade-uso-maquina" />
+            <input type="text" id="cavidade-uso-maquina" name="cavidadeUsoMaquina"/>
           </div>
         </div>
         <div class="ciclo-form-maquina">
           <div class="campo-form" id="ciclo-form-maquina">
             <label for="ciclo-form-maquina">Ciclo:</label>
-            <input type="text" id="ciclo-form-maquina"/>
+            <input type="text" id="ciclo-form-maquina" name='cicloMaquina'/>
           </div>
           <div class="campo-form" id="ciclo-uso-form-maquina">
             <label for="ciclo-uso-form-maquina">Ciclo em Uso:</label>
-            <input type="text" id="ciclo-uso-form-maquina"/>
+            <input type="text" id="ciclo-uso-form-maquina" name="cicloUsoMaquina"/>
           </div>
         </div>
-        <div class="campo-form">
+        <!-- <div class="campo-form">
           <div class="nome-botao-radio">
             <label for="tipo-maquina">Tipo da Máquina:</label>
           </div>
           <div class="botao-radio">
             <div class="rotuladeira">
               <label class="text-radio" for="rotuladeira">Rotuladeira</label><br>
-              <input type="radio" id="rotuladeira"value="rotuladeira" name="tipo-maquina">
+              <input type="radio" id="rotuladeira" value="rotuladeira" name="tipoMaquina">
               <label class="text-radio" for="sopradora">Sopradora</label>
-              <input type="radio" id="sopradora"value="sopradora" name="tipo-maquina">
+              <input type="radio" id="sopradora" value="sopradora" name="tipoMaquina">
             </div>
           </div>
-        </div>
+        </div> -->
         
         <button class="botao-form" type="submit">Salvar</button>
       </form>

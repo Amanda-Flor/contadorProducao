@@ -1,7 +1,13 @@
 const express = require('express')
 const routes = require('./routes')
+const bodyParser = require('body-parser')
 
 const app = express()
+
+//Configurando para receber JSON
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
 
 //Configurações para conexão com o banco
 app.use(express.json())

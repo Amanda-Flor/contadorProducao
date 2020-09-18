@@ -1,28 +1,49 @@
 const knex = require("../database")
 
-module.exports = {
-    async index (req, res){
-        const results = await knex("clientes")
 
-        return res.json(results)
+module.exports = {
+    //Pesquisa Cliente
+    async search (req, res){
+
+        const{codCliente} = req.body
+        
+
+        const dadosClientes = await knex('clientes')
+        .where({cod_cliente:codCliente})    
+        .select('clientes.*');
+
+        const {
+            cod_cliente,
+            nome_cliente,
+            email_cliente,
+            telefone_cliente,
+            cpnj_cliente
+        } = dadosClientes[0]
+
+
+        return res.render('consulta_cliente.html', { cod_cliente, nome_cliente, email_cliente, telefone_cliente, cpnj_cliente })
     },
+    //Cadastro de Cliente
     async create(req, res, next) {
         try{
-            const{
-                nome_cliente,
-                email_cliente,
-                telefone_cliente,
-                cpnj_cliente
-            } = req.body
-            
+
+            const {
+                nomeCliente,
+                emailCliente,
+                telefoneCliente,
+                cpnjCliente,
+
+            } = req.body;
+
             await knex('clientes').insert({
-                nome_cliente,
-                email_cliente,
-                telefone_cliente,
-                cpnj_cliente
+                nome_cliente: nomeCliente,
+                email_cliente: emailCliente,
+                telefone_cliente: telefoneCliente,
+                cpnj_cliente: cpnjCliente,
             })
 
-            return res.status(201).send()
+            
+            return res.render('cadastro_cliente.html')
         } catch (error){
             next(error)
         }

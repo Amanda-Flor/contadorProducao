@@ -73,17 +73,17 @@
       <h3>Consulta de Máquina</h3>
       <div class="dashboard">
         <h4>Pesquisa de Máquina</h4>
-        <form action="">
+        <form action="/pesquisaMaquina" method="POST">
           <label for="busca">Código da Máquina:</label>
           <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="q">
+            <input class="input-search-form" type="search" id="busca" name="codMaquina">
             <button class="button-search-form" type="submit">
-              <img class="img-menu" src="../../public/img/lupa.png" alt="pesquisar">
+              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
           </div>
         </form>
         <h4>Resultado da Pesquisa</h4>
-        <form action="">
+        <form action="pesquisaMaquina" method="POST">
           <div class="relatorio">
             <table class="info">
               <tr class="thear">
@@ -91,19 +91,31 @@
               </tr>
               <tr>
                 <th class="th-table">Código da Máquina:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ cod_maquina }}</td>
               </tr>
               <tr>
                 <th class="th-table">Nome da Máquina:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ nome_maquina }}</td>
               </tr>
               <tr>
                 <th class="th-table">Ciclo:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ ciclo_maquina }}</td>
+              </tr>
+              <tr>
+                <th class="th-table">Ciclo em Uso:</th>
+                <td class="td-table">{{ ciclo_uso_maquina }}</td>
               </tr>
               <tr>
                 <th class="th-table">Cavidade:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{ cavidade_maquina }}</td>
+              </tr>
+              <tr>
+                <th class="th-table">Cavidade em Uso:</th>
+                <td class="td-table">{{ cavidade_uso_maquina }}</td>
+              </tr>
+              <tr>
+                <th class="th-table">Tipo da Máquina:</th>
+                <td class="td-table">{{ tipo_maquina }}</td>
               </tr>
             </table>
           </div>
