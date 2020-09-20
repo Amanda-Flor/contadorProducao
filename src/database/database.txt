@@ -55,8 +55,6 @@ CREATE TABLE produtos(
 
 CREATE TABLE pedidos(
     cod_pedido INT(4) AUTO_INCREMENT,
-    quantidade_produto_pedido INT(10) NOT NULL,
-    rotulagem_pedido CHAR NOT NULL,
     data_inicio_pedido DATE NOT NULL,
     status_pedido VARCHAR(100) NOT NULL,
     cod_funcionario INT(4) NOT NULL,
@@ -96,6 +94,8 @@ CREATE TABLE producoes(
 CREATE TABLE pedido_produtos(
     cod_produto INT(4) NOT NULL,
     cod_pedido INT(4) NOT NULL,
+    quantidade_produto INT(10) NOT NULL,
+    rotulagem_produto CHAR NOT NULL,
     FOREIGN KEY (cod_produto) REFERENCES produtos (cod_produto),
     FOREIGN KEY (cod_pedido) REFERENCES pedidoS (cod_pedido)
 );

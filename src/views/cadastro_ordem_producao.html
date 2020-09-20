@@ -72,68 +72,58 @@
     <div class="section">
       <h3>Ordem de Produção</h3>
       <div class="formulario">
-        <form action="">
-          <h4>1 Passo - Dados do Pedido</h4>
-          <form action="">
-            <label for="busca">Código do Pedido:</label>
-            <div class="search-form">
-              <input class="input-search-form" type="search" id="busca" name="q">
-              <button class="button-search-form" type="submit">
+        <h4>1 Passo - Dados do Pedido</h4>
+          <form action="/CadastroOrdemProducao" method="POST">
+            <label for="codProduto">Código do Pedido:</label>
+            <div class='search-form'>
+              <select class="search-form" name='codPedido' required> 
+                <option value="">Selecione uma opção</option>
+                {%for pedido in pedidos %}
+                    <option value="{{pedido}}" {{ "selected" if filters.subject == loop.index }}> 
+                        {{pedido}} 
+                    </option>
+                {%endfor%}  
+              </select>
+              <button class="button-search-form" type="submit" >
                 <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
               </button>
             </div>
           </form>
 
+          
           <h4>2 Passo - Seleção do Produto</h4>
-          <form action="">
+          {%for itemPedido in itensPedido %}
+          <form action="salvarOrdemProducao" method="POST">
             <label for="busca">Código do Produto:</label>
-            <table class="produtos-pedido">
-              <tr>
-                <th>Cód. do Produto</th>
-                <th>Nome do Produto</th>
-                <th>Rotulagem</th>
-                <th>Quantidade</th>
-                <th> </th>
-              </tr>
-              <tr>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
-                <td>
-                  <div class="botao-relatorio" id="selecionar">Selecionar</div>
-                </td>
-              </tr>
-              <tr>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
-                <td>
-                  <div class="botao-relatorio" id="selecionar">Selecionar</div>
-                </td>
-              </tr>
-            </table>
+            <div class="campo-form" id="numero-cavidade-maquina">
+              <label for="numero-cavidade-maquina">Cód. do Pedido:</label>
+              <p type="text" id="numero-cavidade-maquina" name="CodPedido">{{itemPedido.cod_pedido}}</p>
+            </div>
+            <div class="campo-form" id="numero-cavidade-maquina">
+              <label for="numero-cavidade-maquina">Nome do Produto:</label>
+              <p type="text" id="numero-cavidade-maquina" name="nomeProduto">{{itemPedido.nome_produto}}</p>
+            </div>
+            <div class="campo-form" id="numero-cavidade-maquina">
+              <label for="numero-cavidade-maquina">Rotulagem:</label>
+              <p type="text" id="numero-cavidade-maquina" name="rotulagemProduto">{{itemPedido.rotulagem_produto}}</p>
+            </div>
+            <div class="campo-form" id="numero-cavidade-maquina">
+              <label for="numero-cavidade-maquina">Quantidade:</label>
+              <p type="text" id="numero-cavidade-maquina" name="quantidadeProduto">{{itemPedido.quantidade_produto}}</p>
+            </div>
+            <button class="botao-form" type="submit">Selecionar</button>
           </form>
+          {%endfor%}
 
           <h4>3 Passo - Agendamento da Produção</h4>
-          <form action="">
+          <form action="/salvarOrdemProducao">
             <div class="infoPedido-op">
               <div class="campo-form" id="numero-cavidade-maquina">
-                <label for="numero-cavidade-maquina">Código do Produto:</label>
-                <input type="text" id="numero-cavidade-maquina" />
+                <label for="numero-cavidade-maquina">Produto:</label>
+                <p type="text" id="numero-cavidade-maquina">{{nomeProduto}}</p>
               </div>
-              <div class="campo-form" id="cavidade-uso-maquina">
-                <label for="cavidade-uso-maquina">Código da Máquina:</label>
-                <input type="text" id="cavidade-uso-maquina" />
-              </div>
-              <div class="campo-form" id="cavidade-uso-maquina">
-                <label for="cavidade-uso-maquina">Dias de Produção:</label>
-                <input type="text" id="cavidade-uso-maquina" />
-              </div>
-            </div>
   
-            <table class="calendario">
+            <!-- <table class="calendario">
               <caption class="ano">2020</caption>
               <thead>
                 <tr class="thear-calendario">
@@ -581,16 +571,16 @@
                   <td class="dia"> </td>
                 </tr>
               </tbody>
-            </table>
+            </table> -->
   
             <div class="infoPedido-op">
               <div class="campo-form" id="inicio-op">
                 <label for="inicio-op">Inicialização:</label>
-                <input type="date" id="inicio-op" />
+                <input type="date" id="inicio-op" name="inicioOP" />
               </div>
               <div class="campo-form" id="final-op">
                 <label for="final-op">Finalização:</label>
-                <input type="date" id="final-op" />
+                <input type="date" id="final-op" name="finalOP"/>
               </div>
             </div>
   

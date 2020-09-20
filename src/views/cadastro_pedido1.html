@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PI1A5 - Home</title>
 
-
-      <link rel="stylesheet" href="/style/main.css">
-      <link rel="stylesheet" href="/style/form.css">      
-      <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/form.css">
+    <link rel="stylesheet" href="/style/main.css">      
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
   </head>
   <body class="container">
 
@@ -70,73 +69,43 @@
 
     <!--Corpo do site-->
     <div class="section">
-      <h3>Consulta de Funcionários</h3>
-      <div class="dashboard">
-        <h4>Pesquisa de Funcionario</h4>
+      <h3>Cadastro de Pedido</h3>
+      <div class="formulario">
+        
+        <h4>1 Passo - Dados do Cliente</h4>
+        <div class="campo-form" id="codProduto-value-pedido">
+            <label for="codProduto-value-pedido">Código do Cliente:</label>
+            <p type="text" id="codProduto-value-pedido" name='codCliente' value='{{codCliente}}'>{{codCliente}}</p>
+        </div>
 
-        <form action="/pesquisaFuncionario" method="POST">
-          <label for="busca">Código do Funcionario:</label>
-          <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="codFuncionario">
-            <button class="button-search-form" type="submit">
+        <h4>2 Passo - Produtos</h4>
+        <form action="/salvarPedido" method="POST">
+          <label for="busca">Código do Produto:</label>
+          <div class='search-form'>
+            <select class="search-form" name='codProduto' required> 
+              <option value="">Selecione uma opção</option>
+              {%for produto in produtos %}
+                  <option value="{{produto}}" {{ "selected" if filters.subject == loop.index }}> 
+                      {{produto}} 
+                  </option>
+              {%endfor%}  
+            </select>
+            <button class="button-search-form" type="submit" >
               <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
-          </div>
+          </div>  
         </form>
-        <h4>Resultado da Pesquisa</h4>
-        <div class="relatorio">
-          <table class="info">
-            <tr class="thear">
-              <th colspan="2">Dados do Funcionário</th> 
-            </tr>
-            <tr>
-              <th class="th-table">Código do Funcionário:</th>
-              <td class="td-table">{{ cod_funcionario }}</td>
-            </tr>
-            <tr>
-              <th class="th-table">Nome do Funcionário:</th>
-              <td class="td-table">{{ nome_funcionario }}</td>
-            </tr>
-            <tr>
-              <th class="th-table">CPF:</th>
-              <td class="td-table">{{ cpfFuncionario }}</td>
-            </tr>
-            <tr>
-              <th class="th-table">Telefone:</th>
-              <td class="td-table">{{ telefone_funcionario }}</td>
-            </tr>
-            <tr>
-              <th class="th-table">Data de Nascimento:</th>
-              <td class="td-table">{{ dataNascimentoFuncionario }}</td>
-            </tr>
-            <tr>
-              <th class="th-table">CEP Residencial:</th>
-              <td class="td-table">{{ cepFuncionario }}</td>
-            </tr>
-            <tr>
-              <th class="th-table">Naturalidade:</th>
-              <td class="td-table">{{ naturalidadeFuncionario }}</td>
-            </tr>
-            <tr>
-              <th class="th-table">Sexo:</th>
-              <td class="td-table">{{ sexoFuncionario }}</td>
-            </tr>
-            <tr>
-              <th class="th-table">Nível de Acesso:</th>
-              <td class="td-table">{{ nivelAcessoFuncionario }}</td>
-            </tr>
-            
-          </table>
-        <form action="">
-          
-  
-          <div class="menu-consulta">
-            <button id="botao-desabilitar" class="botao-form" type="submit">Desabilitar</button>
-            <button id="botao-editar" class="botao-form" type="submit">Editar</button>
-          </div>
-        </form>
-        
+
+        <h4>3 Passo - Dados do Produto do Pedido</h4>
+
+        <h4>3 Passo - Revisão do Pedido</h4>
+
       </div>
+      <footer>
+        <div class="informativo">
+          Importante! <br> Preencha todos os dados 
+        </div>
+      </footer>
     </div>
 
   </body>

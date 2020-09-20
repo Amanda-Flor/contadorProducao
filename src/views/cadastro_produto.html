@@ -72,31 +72,47 @@
       <h3>Cadastro de Produto</h3>
       <div class="formulario">
         <h4>Dados do Produto</h4>
+        <div class="campo-form">
+          <form id='form-pesquisa' action="/salvarProduto" method="POST">
+            <label for="cliente">Cliente:</label>
+  
+            <div class='search-form'>
+              <select class="search-form" name='cliente' required> 
+                <option value="">Selecione uma opção</option>
+                {%for cliente in clientes %}
+                <option value="{{loop.index0}}" {{ "selected" if filters.subject == loop.index }}> 
+                    {{cliente}} 
+                </option>
+                {%endfor%}   
+              </select>
 
-        <form action="salvarProduto" method="POST">
-          <div class="campo-form">
-            <label for="nome-produto">Nome do Produto:</label>
-            <input type="text" id="nome-produto" name="nomeProduto" />
-          </div>
-          <div class="campo-form">
-            <label for="materia-produto">Matéria Prima:</label>
-            <input type="text" id="materia-produto" name="materiaPrima" />
-          </div>
-          <div class="campo-form">
-            <label for="quantLote-produto">Quantidade por Lote:</label>
-            <input type="text" id="quantLote-produto" name="quantLote" />
-          </div>
-          <div class="campo-form">
-            <label for="cnpjCliente-produto">CNPJ do Cliente:</label>
-            <input type="text" name="cnpjCliente">
-          </div>
-          <div class="campo-form">
-            <label for="codProdutora-produto">Código da máquina produtora:</label>
-            <input type="text" name="codMaquina">
-          </div>
-          
-          <button class="botao-form" type="submit">Salvar</button>
-        </form>
+              <label for="maquina">Máquina produtora:</label>
+  
+              <div class='search-form'>
+                <select class="search-form" name='maquina' required> 
+                  <option value="">Selecione uma opção</option>
+                  {%for maquina in maquinas %}
+                  <option value="{{loop.index0}}" {{ "selected" if filters.subject == loop.index }}> 
+                      {{maquina}} 
+                  </option>
+                  {%endfor%}   
+              </select>
+            </div> 
+            <div class="campo-form">
+              <label for="nome-produto">Nome do Produto:</label>
+              <input type="text" id="nome-produto" name="nomeProduto" />
+            </div>
+            <div class="campo-form">
+              <label for="materia-produto">Matéria Prima:</label>
+              <input type="text" id="materia-produto" name="materiaPrima" />
+            </div>
+            <div class="campo-form">
+              <label for="quantLote-produto">Quantidade por Lote:</label>
+              <input type="text" id="quantLote-produto" name="quantLote" />
+            </div> 
+            <button class="botao-form" type="submit">Salvar</button>
+          </form>
+        </div>
       </div>
 
       <footer>

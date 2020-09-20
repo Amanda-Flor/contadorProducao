@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="/style/main.css">  
     <link rel="stylesheet" href="/style/form.css">    
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/public/img/logo.png" type="imagem/png">
   </head>
   <body class="container">
 
     <!-- Cabeçalho-->
-    <header>
+    <!-- <header>
       <img class="logo" src="/img/logo.png" alt="Logo">
-    </header>
+    </header> -->
     
     <!--Menu-->
     <nav>
@@ -73,17 +74,28 @@
       <h3>Consulta de Produto</h3>
       <div class="dashboard">
         <h4>Pesquisa de Produto</h4>
-        <form action="/pesquisaProduto" method="POST">
+
+        <form id='form-pesquisa' action="/pesquisaProduto" method="POST">
           <label for="busca">Código da Produto:</label>
-          <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="codProduto">
-            <button class="button-search-form" type="submit">
+
+          <div class='search-form'>
+            <select class="search-form" name='codProduto' required> 
+              <option value="">Selecione uma opção</option>
+              {%for produto in produtos %}
+                  <option value="{{loop.index0}}" {{ "selected" if filters.subject == loop.index }}> 
+                      {{produto}} 
+                  </option>
+              {%endfor%}  
+            </select>
+            <button class="button-search-form" type="submit" >
               <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
-          </div>
+          </div>  
+          
         </form>
+        
         <h4>Resultado da Pesquisa</h4>
-        <form action="">
+        <form action="/pequisaProduto">
           <div class="relatorio">
             <table class="info">
               <tr class="thear">
@@ -110,22 +122,22 @@
               </tr>
               <tr>
                 <th class="th-table">Máquina Produtora:</th>
-                <td class="td-table">{{cod_maquina}}</td>
+                <td class="td-table">{{nome_maquina}}</td>
               </tr>
               <tr>
                 <td class="td-table" colspan="2"> </td>
               </tr>
               <tr>
                 <th class="th-table">Nome do Cliente:</th>
-                <td class="td-table">{{cod_cliente}}</td>
+                <td class="td-table">{{nome_cliente}}</td>
               </tr>
               <tr>
                 <th class="th-table">Email:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{email_cliente}}</td>
               </tr>
               <tr>
                 <th class="th-table">Telefone:</th>
-                <td class="td-table">*****</td>
+                <td class="td-table">{{telefone_cliente}}</td>
               </tr>
             </table>
           </div>

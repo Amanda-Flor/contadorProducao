@@ -74,7 +74,7 @@
       <div class="formulario">
         <h4>Dados do Funcionário</h4>
 
-        <form action="" method="POST" id="cadastrofuncionario">
+        <form action="/salvarFuncionario" method="POST" id="cadastrofuncionario">
           <div class="campo-form">
             <label for="nome-funcionario">Nome Completo:</label>
             <input type="text" id="nome-funcionario" name="nomeFuncionario" />
@@ -85,7 +85,7 @@
           </div>
           <div class="campo-form">
             <label for="telefone-funcionario">Telefone:</label>
-            <input type="text" id="telefoneFuncionario" name="telefone_funcionario"/>
+            <input type="text" id="telefoneFuncionario" name="telefoneFuncionario"/>
           </div>
           <div class="campo-form">
             <label for="data-funcionario">Data de Nascimento:</label>
@@ -117,21 +117,15 @@
                 <option value="nivel3">Nível 3</option>
             </select>
           </div>
-          
-          <div class="dashboard-dadosAcesso">
-            <h4>Dados de Acesso</h4>
-            <form id="acesso" action="">
-              <div class="campo-form" id="campo-acesso-email">
-                <label for="email-funcionario">Email:</label>
-                <input type="email" id="email-funcionario" />
-              </div>
-              <div class="campo-form" id="campo-acesso-senha">
-                <label for="senha-funcionario">Senha:</label>
-                <input type="password" id="senha-funcionario" />
-              </div>
-            </form>
+          <h4>Dados de Acesso</h4>
+          <div class="campo-form" id="campo-acesso-email">
+            <label for="email-funcionario">Email:</label>
+            <input type="email" id="email-funcionario" name="emailFuncionario" />
           </div>
-
+          <div class="campo-form" id="campo-acesso-senha">
+            <label for="senha-funcionario">Senha:</label>
+            <input type="password" id="senha-funcionario" name="senhaFuncionario"/>
+          </div>
           <button class="botao-form" type="submit" form="cadastrofuncionario">Salvar</button>
         </form>
       </div>

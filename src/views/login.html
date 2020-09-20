@@ -8,6 +8,10 @@
 
       <link rel="stylesheet" href="/style/login.css">      
       <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+      <script>
+        
+      </script>
+  
   </head>
   <body>
     <div class="logo-container">
@@ -15,24 +19,25 @@
       <p>Contador de Producão</p>
     </div>
     <div class="login">
-      <form action="">
+      <form action="/acesso" method="POST">
         <div>
           <div>
             <label for="email">Email:</label>
           </div>
-          <input type="email" id="email" />
+          <input type="email" id="email" name='email'/>
         </div>
         <div>
           <div>
             <label for="senha">Senha:</label>
           </div>
-          <input type="password" id="senha" />
+          <input type="password" id="senha" name='senha'/>
         </div>
         <div class="button">
           <a href="./home.html">
             <button type="submit">Entrar</button>
           </a>
         </div>
+        <a href="/salvarAcessoFuncionario" get=post>Primeiro Acesso</a>
       </form>
     </div>
   </body>

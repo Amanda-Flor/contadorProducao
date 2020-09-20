@@ -1,26 +1,53 @@
 const knex = require("../database")
-
+const ls = require("local-storage")
 //Conexão no Banco de Dados
 module.exports = {
-    async index (req, res){
-        const results = await knex("acessos")
+    async login (req, res){
+        const{
+            email,
+            senha,
+        } = req.body
 
-        return res.json(results)
+
+        const dadosUsuario = await knex('acessos')
+        .where({email_funcionario:email})
+        .select('acessos.*');
+        // console.log(dadosUsuario)
+
+        const{
+            email_funcionario,
+            senha_funcionario,
+            cod_funcionario,
+        } = dadosUsuario[0]
+
+
+        if(email_funcionario == email && senha_funcionario == senha){
+            
+            ls('usuario', cod_funcionario)
+
+            return res.render('home.html')
+        }else{
+            console.log("oi")
+            return res.render('login.html')
+            
+        }
     },
     async create(req, res, next) {
+
         try{
             const {
-                email_funcionario,
-                senha_funcionario,
-                cod_funcionario,
+                emailFuncionario,
+                senhaFuncionario,
+                codFuncionario: cod_cadastro,
             } = req.body
             await knex('acessos').insert({
-                email_funcionario,
-                senha_funcionario,
-                cod_funcionario,
+                email_funcionario: emailFuncionario,
+                senha_funcionario: senhaFuncionario,
+                cod_funcionario: codFuncionario,
             })
 
-            return res.status(201).send()
+            // alert("Cadastrado com sucesso!")
+            return res.render('funcionario.html')
         } catch (error){
             next(error)
         }

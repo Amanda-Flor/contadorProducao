@@ -1,32 +1,32 @@
 const knex = require("../database")
+const ls = require("local-storage")
+
+
 
 module.exports = {
 
     //Pesquisa Funcionario
-    async search(req, res) {
+    async search(req, res, next) {
 
-        const{codFuncionario} = req.body
-
+        var usuario = ls.get('usuario');
         const dadosFuncionario = await knex('funcionarios')
-        .where({cod_funcionario:codFuncionario})
+        .where({cod_funcionario:usuario})
         .select('funcionarios.*');
-        console.log(dadosFuncionario)
 
-        // const{
-        //     cod_funcionario,
-        //     nome_funcionarios,
-        //     telefone_funcionario,
-        //     data_nascimento_funcionario,
-        //     cep_funcionario,
-        //     naturalidade_funcionario,
-        //     sexo_funcionario,
-        //     nivel_acesso_funcionario,
-        //     cpf_funcionario,
-        // } = dadosFuncionario[0]
+        const{
+            cod_funcionario,
+            nome_funcionarios,
+            telefone_funcionario,
+            data_nascimento_funcionario,
+            cep_funcionario,
+            naturalidade_funcionario,
+            sexo_funcionario,
+            nivel_acesso_funcionario,
+            cpf_funcionario,
+        } = dadosFuncionario[0]
 
-        console.log(dadosFuncionario[0])
 
-        return res.render('cadastro_funcionario.html', { cod_funcionario, nome_funcionarios, telefone_funcionario, data_nascimento_funcionario,  cep_funcionario, naturalidade_funcionario, sexo_funcionario, nivel_acesso_funcionario, cpf_funcionario });
+        return res.render('funcionario.html', {cod_funcionario, nome_funcionarios, telefone_funcionario, data_nascimento_funcionario, cep_funcionario, naturalidade_funcionario, sexo_funcionario, nivel_acesso_funcionario, cpf_funcionario,});
     },
 
     //Cadastro Funcionario
@@ -41,6 +41,8 @@ module.exports = {
                 sexoFuncionario,
                 nivelAcessoFuncionario,
                 cpfFuncionario,
+                emailFuncionario,
+                senhaFuncionario,
             } = req.body;
 
             await knex('funcionarios').insert({
@@ -53,7 +55,21 @@ module.exports = {
                 nivel_acesso_funcionario: nivelAcessoFuncionario,
                 cpf_funcionario: cpfFuncionario,
             }) 
-            return res.render('funcionario.html')
+
+            const acessoFuncionario = await knex('funcionarios')
+            .where({cpf_funcionario:cpfFuncionario})
+            .select('funcionarios.cod_funcionario');
+            const codFuncionario = acessoFuncionario[0].cod_funcionario;
+            
+            console.log(codFuncionario)
+            await knex('acessos').insert({
+                email_funcionario: emailFuncionario,
+                senha_funcionario: senhaFuncionario,
+                cod_funcionario: codFuncionario,
+            })
+
+            // alert("Cadastrado com Sucesso!");
+            return res.render('funcionario.html');
 
         } catch (error){
             next(error)

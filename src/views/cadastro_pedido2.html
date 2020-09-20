@@ -73,46 +73,29 @@
       <div class="formulario">
         
         <h4>1 Passo - Dados do Cliente</h4>
-        <form action="/CadastroPedido" method="POST">
-          <label for="busca">Código do Cliente:</label>
-          <div class='search-form'>
-            <select class="search-form" name='codCliente' required> 
-              <option value="">Selecione uma opção</option>
-              {%for cliente in clientes %}
-                  <option value="{{cliente}}" {{ "selected" if filters.subject == loop.index }}> 
-                      {{cliente}} 
-                  </option>
-              {%endfor%}  
-            </select>
-            <button class="button-search-form" type="submit" >
-              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
-            </button>
-          </div>  
-        </form>
+        <div class="campo-form" id="codProduto-value-pedido">
+            <label for="codProduto-value-pedido">Código do Cliente:</label>
+            <p type="text" id="codProduto-value-pedido" name='CodCliente'>{{codCliente}}</p>
+        </div>
 
         <h4>2 Passo - Produtos</h4>
-        <!-- <form action="/CadastroPedido" method="POST">
-          <label for="busca">Código do Produto:</label>
-          <div class='search-form'>
-            <select class="search-form" name='codProduto' required> 
-              <option value="">Selecione cliente primeiro</option> 
-            </select>
-            <button class="button-search-form" type="submit" >
-              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
-            </button>
-          </div>  
-        </form> -->
+        <div class="campo-form" id="codProduto-value-pedido">
+            <label for="codProduto-value-pedido">Código do Produto:</label>
+            <p type="text" id="codProduto-value-pedido" name="codProduto">{{codProduto}}</p>
+        </div>
 
-        <!--form das informações do pedido-->
-        <!-- <form action="" method="">
+        <h4>3 Passo - Dados do Produto do Pedido</h4>
+        <form action="/salvarPedido" method="POST">
           <div class="value-pedido">
-            <div class="campo-form" id="codProduto-value-pedido">
-              <label for="codProduto-value-pedido">Código do Produto:</label>
-              <input type="text" id="codProduto-value-pedido" />
-            </div>
             <div class="campo-form" id="quantProduto-pedido">
               <label for="quantProduto-pedido">Quant. do Produto:</label>
-              <input type="text" id="quantProduto-pedido" />
+              <input type="text" id="quantProduto-pedido" name='quantProduto'/>
+            </div>
+          </div>
+          <div class="value-pedido">
+            <div class="campo-form" id="quantProduto-pedido">
+              <label for="quantProduto-pedido">Matéria Prima:</label>
+              <input type="text" id="quantProduto-pedido" name='materiaPrima'/>
             </div>
           </div>
           <div class="campo-form">
@@ -122,18 +105,18 @@
             <div class="botao-radio">
               <div class="rotulagem">
                 <label class="text-radio" for="rotulagem">Sim</label>
-                <input type="radio" id="sim"value="sim" name="rotulagem">
+                <input type="radio" id="sim"value="s" name="rotulagem">
                 <label class="text-radio" for="sopradora">Não</label>
-                <input type="radio" id="nao"value="nao" name="rotulagem">
+                <input type="radio" id="nao"value="n" name="rotulagem">
               </div>
             </div>
           </div>
 
           <button class="botao-form" type="submit">Adicionar</button>
-        </form> -->
+        </form>
 
         <h4>3 Passo - Revisão do Pedido</h4>
-        <!-- <form action="">
+        <form action="">
           <div class="relatorio">
             <table class="info">
               <tr class="thear">
@@ -176,28 +159,21 @@
                 <th>Quantidade</th>
                 <th> </th>
               </tr>
+              {%for produto in produtos %}
               <tr>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
+                <td>{{produto}}</td>
+                <td>{{produto}}</td>
+                <td>{{produto}}</td>
+                <td>{{produto}}</td>
                 <td>
-                  <div class="botao-relatorio">Excluir</div>
+                    <div class="botao-relatorio">Excluir</div>
                 </td>
               </tr>
-              <tr>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
-                <td>*****</td>
-                <td>
-                  <div class="botao-relatorio">Excluir</div>
-                </td>
-              </tr>
+              {%endfor%} 
             </table>
           </div>
           <button class="botao-form" type="submit">Salvar</button>
-        </form> -->
+        </form>
       </div>
       <footer>
         <div class="informativo">

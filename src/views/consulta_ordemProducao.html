@@ -74,17 +74,24 @@
       <h3>Consulta de Ordem de Produção</h3>
       <div class="dashboard">
         <h4>Pesquisa de Ordem de Produção</h4>
-        <form action="">
-          <label for="busca">Código da Ordem de Produção:</label>
-          <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="q">
-            <button class="button-search-form" type="submit">
-              <img class="img-menu" src="../../public/img/lupa.png" alt="pesquisar">
+        <form action="/pesquisarOrdemProducao" method="POST">
+          <label for="codProduto">Código da Ordem de Produção:</label>
+          <div class='search-form'>
+            <select class="search-form" name='codOP' required> 
+              <option value="">Selecione uma opção</option>
+              {%for op in ops %}
+                  <option value="{{loop.index0}}" {{ "selected" if filters.subject == loop.index }}> 
+                      {{op}} 
+                  </option>
+              {%endfor%}  
+            </select>
+            <button class="button-search-form" type="submit" >
+              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
-          </div>
+          </div>  
         </form>
 
-        <table class="calendario">
+        <!-- <table class="calendario">
           <caption class="ano">2020</caption>
           <thead>
             <tr class="thear-calendario">
@@ -532,8 +539,9 @@
               <td class="dia"> </td>
             </tr>
           </tbody>
-        </table>
-        <form action="">
+        </table> -->
+
+        <form action= '/selecaoProduto' method="POST">
           <div class="relatorio">
             <h4>Dados da Ordem de Produção</h4>
             <div class="relatorio">
@@ -543,27 +551,29 @@
                 </tr>
                 <tr>
                   <th class="th-table">Número da Ordem de Produção:</th>
-                  <td class="td-table">*****</td>
+                  <td class="td-table">{{cod_ordemProducao}}</td>
                 </tr>
+                {%for produto in produtos %}
                 <tr>
-                  <th class="th-table">Código do Produto:</th>
-                  <td class="td-table">*****</td>
+                  <th class="th-table">Código do Produto {{loop.index}}:</th>
+                  <td class="td-table" value="{{loop.index0}}">{{produto}} </td>
                 </tr>
+                {%endfor%} 
                 <tr>
                   <th class="th-table">Início:</th>
-                  <td class="td-table">*****</td>
+                  <td class="td-table">{{data_inicio_ordemProducao}}</td>
                 </tr>
                 <tr>
                   <th class="th-table">Final:</th>
-                  <td class="td-table">*****</td>
+                  <td class="td-table">{{data_final_ordemProducao}}</td>
                 </tr>
                 <tr>
-                  <th class="th-table">Código da Máquina:</th>
-                  <td class="td-table">*****</td>
+                  <th class="th-table">Máquina:</th>
+                  <td class="td-table">{{nome_maquina}}</td>
                 </tr>
                 <tr>
-                  <th class="th-table">Dias de produção:</th>
-                  <td class="td-table">*****</td>
+                  <th class="th-table">Pedido:</th>
+                  <td class="td-table">{{cod_pedido}}</td>
                 </tr>
               </table>
             </div>
