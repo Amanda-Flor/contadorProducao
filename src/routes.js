@@ -61,10 +61,38 @@ routes
 
 //CRUD Pedidos
 .get('/CadastroPedido', PedidosController.seachCliente)
-.post('/CadastroPedido', PedidosController.seachProduto)
-.get('/salvarPedido', PedidosController.getDadosPedido)
+.post('/listarProduto', PedidosController.listarProduto)
+.post('/escolherProduto', PedidosController.escolherProduto)
+.post('/criarPedidoProduto', PedidosController.criarPedidoProduto)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.post('/CadastroPedido', PedidosController.seachProduto)//
 .post('/salvarPedido', PedidosController.dadosPedido)
-.post('/finalizarPedido', PedidosController.create)
+.post('/preencherTabela', PedidosController.preencherTabela)
+.post('/tabelaPedido', PedidosController.tabelaPedido)
+
 .post('/pesquisaPedido', PedidosController.search)
 
 

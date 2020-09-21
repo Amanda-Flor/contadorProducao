@@ -75,27 +75,39 @@
         <h4>1 Passo - Dados do Cliente</h4>
         <div class="campo-form" id="codProduto-value-pedido">
             <label for="codProduto-value-pedido">Código do Cliente:</label>
-            <p type="text" id="codProduto-value-pedido" name='CodCliente'>{{codCliente}}</p>
+            <p type="text" id="codProduto-value-pedido" name='codCliente'>{{nomeCliente}}</p>
         </div>
 
         <h4>2 Passo - Produtos</h4>
-        <div class="campo-form" id="codProduto-value-pedido">
-            <label for="codProduto-value-pedido">Código do Produto:</label>
-            <p type="text" id="codProduto-value-pedido" name="codProduto">{{codProduto}}</p>
-        </div>
+        <form action="/escolherProduto" method="POST">
+          <label for="busca">Código do Produto:</label>
+          <div class='search-form'>
+            <select class="search-form" name='codProduto' required> 
+              <option value="">Selecione uma opção</option>
+              {%for produto in listaProduto %}
+                  <option value='{{produto.cod_produto}}'>  {{produto.nome_produto}} </option>
+              {%endfor%}  
+            </select>
+            <button class="button-search-form" type="submit" >
+              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
+            </button>
+          </div>  
+        </form>
 
-        <h4>3 Passo - Dados do Produto do Pedido</h4>
-        <form action="/salvarPedido" method="POST">
+        
+
+        <!--Form de dados do produto selecionado-->
+        <form action="/criarPedidoProduto" method="POST">
+          <!--Form de dados do produto selecionado-->
+          <h4>3 Passo - Dados do Produto do Pedido</h4>
+          <div class="campo-form" id="codProduto-value-pedido">
+            <label for="codProduto-value-pedido">Produto:</label>
+            <p type="text" id="codProduto-value-pedido" name='codCliente'>{{nomeProduto}}</p>
+          </div>
           <div class="value-pedido">
             <div class="campo-form" id="quantProduto-pedido">
               <label for="quantProduto-pedido">Quant. do Produto:</label>
               <input type="text" id="quantProduto-pedido" name='quantProduto'/>
-            </div>
-          </div>
-          <div class="value-pedido">
-            <div class="campo-form" id="quantProduto-pedido">
-              <label for="quantProduto-pedido">Matéria Prima:</label>
-              <input type="text" id="quantProduto-pedido" name='materiaPrima'/>
             </div>
           </div>
           <div class="campo-form">
@@ -115,65 +127,23 @@
           <button class="botao-form" type="submit">Adicionar</button>
         </form>
 
-        <h4>3 Passo - Revisão do Pedido</h4>
-        <form action="">
-          <div class="relatorio">
-            <table class="info">
-              <tr class="thear">
-                <th colspan="2">Relatório do Pedido</th> 
-              </tr>
-              <tr>
-                <th class="th-table">Número do Pedido:</th>
-                <td class="td-table">*****</td>
-              </tr>
-              <tr>
-                <th class="th-table">Empresa:</th>
-                <td class="td-table">*****</td>
-              </tr>
-              <tr>
-                <th class="th-table">E-mail:</th>
-                <td class="td-table">*****</td>
-              </tr>
-              <tr>
-                <th class="th-table">Telefone:</th>
-                <td class="td-table">*****</td>
-              </tr>
-              <tr>
-                <td class="td-table" colspan="2"> </td>
-              </tr>
-              <tr>
-                <th class="th-table">Responsável:</th>
-                <td class="td-table">*****</td>
-              </tr>
-              <tr>
-                <th class="th-table">Data de Solicitação:</th>
-                <td class="td-table">*****</td>
-              </tr>
-            </table>
 
-            <table class="produtos-pedido">
-              <tr>
-                <th>Cód. do Produto</th>
-                <th>Nome do Produto</th>
-                <th>Rotulagem</th>
-                <th>Quantidade</th>
-                <th> </th>
-              </tr>
-              {%for produto in produtos %}
-              <tr>
-                <td>{{produto}}</td>
-                <td>{{produto}}</td>
-                <td>{{produto}}</td>
-                <td>{{produto}}</td>
-                <td>
-                    <div class="botao-relatorio">Excluir</div>
-                </td>
-              </tr>
-              {%endfor%} 
-            </table>
-          </div>
-          <button class="botao-form" type="submit">Salvar</button>
-        </form>
+        <table class="produtos-pedido">
+          <tr>
+            <th>Cód. do Produto</th>
+            <th>Rotulagem</th>
+            <th>Quantidade</th>
+          </tr>
+          
+          {%for dadoProduto in tabelaProdutos %}
+          <tr>
+            <td>{{dadoProduto.cod_produto}}</td>
+            <td>{{dadoProduto.rotulagem_produto}}</td>
+            <td>{{dadoProduto.quantidade_produto}}</td>
+          </tr>
+          {%endfor%} 
+        
+        </table>
       </div>
       <footer>
         <div class="informativo">
