@@ -100,13 +100,19 @@
             <input type="text" id="naturalidade-funcionario" name="naturalidadeFuncionario"/>
           </div>
           <div class="campo-form">
-            <label for="sexoFuncionario">Sexo:</label>
-            <select name="sexo_funcionario" id="sexo-funcionario">
-              <!-- <option value=""></option> -->
-              <option value="masculino">Masculino</option>
-              <option value="feminino">Feminino</option>
-              <option value="outro">Outro</option>
-          </select>
+            <div class="nome-botao-radio">
+              <label for="rotulagem">Gênero:</label>
+            </div>
+            <div class="botao-radio">
+              <div class="genero">
+                <label class="text-radio" for="genero">Feminio</label>
+                <input type="radio" id="feminino"value="feminino" name="sexo">
+                <label class="text-radio" for="genero">Masculino</label>
+                <input type="radio" id="masculino"value="masculino" name="sexo">
+                <label class="text-radio" for="genero">Não Declarante</label>
+                <input type="radio" id="naoDeclarante"value="naoDeclarante" name="sexo">
+              </div>
+            </div>
           </div>
           <div class="campo-form">
               <label for="nivelAcesso-funcionario">Nível de Acesso</label>

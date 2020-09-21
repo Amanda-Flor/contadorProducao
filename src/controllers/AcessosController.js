@@ -27,8 +27,8 @@ module.exports = {
 
             return res.render('home.html')
         }else{
-            console.log("oi")
-            return res.render('login.html')
+            const menssagem = 'Dados incorretos!'
+            return res.render('login.html', {menssagem})
             
         }
     },

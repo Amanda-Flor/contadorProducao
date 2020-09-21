@@ -62,11 +62,11 @@ footer{
 
 /*Configuração de radios*/
 
-#rotuladeira, #sopradora, #sim, #nao{
+#rotuladeira, #sopradora, #sim, #nao, #masculino, #feminino, #naoDeclarante{
     width:5%;
     margin-left: 0.5rem;
 }
-.rotuladeira, .rotulagem{
+.rotuladeira, .rotulagem, .genero, .tipoMaquina{
     display: flex;
     margin: 0.5rem;
     width: 50%;

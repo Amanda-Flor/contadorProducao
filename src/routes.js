@@ -20,12 +20,15 @@ routes
 .post('/salvarAcessoFuncionario', AcessosController.create)
 
 //CRUD Cliente
+.get('/ConsultaCliente', ClientesController.search)
+.post('/pesquisaCliente', ClientesController.searchCliente)
 .post('/salvarCliente', ClientesController.create)
-.post('/pesquisaCliente', ClientesController.search)
+
 
 
 //CRUD Maquinas
-.post('/pesquisaMaquina', MaquinasController.search)
+.get('/ConsultaMaquina', MaquinasController.search)
+.post('/pesquisaMaquina', MaquinasController.searchMaquina)
 .post('/salvarMaquina', MaquinasController.create)
 
 
@@ -45,19 +48,9 @@ routes
 .get('/CadastroOrdemProducao', OrdemProducaoController.searchPedido)
 .post('/CadastroOrdemProducao', OrdemProducaoController.selectProduto)
 .post('/salvarOrdemProducao', OrdemProducaoController.createOP)
+.post('/finalizarOrdemProducao', OrdemProducaoController.finalizarOrdemProducao)
 .get('/ConsultaOrdemProducao', OrdemProducaoController.searchOP)
 .post('/pesquisarOrdemProducao', OrdemProducaoController.search)
-
-
-
-
-
-
-
-
-
-
-
 
 //CRUD Pedidos
 .get('/CadastroPedido', PedidosController.seachCliente)
@@ -65,50 +58,7 @@ routes
 .post('/escolherProduto', PedidosController.escolherProduto)
 .post('/criarPedidoProduto', PedidosController.criarPedidoProduto)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.post('/CadastroPedido', PedidosController.seachProduto)//
-.post('/salvarPedido', PedidosController.dadosPedido)
-.post('/preencherTabela', PedidosController.preencherTabela)
-.post('/tabelaPedido', PedidosController.tabelaPedido)
-
 .post('/pesquisaPedido', PedidosController.search)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //renderizando os html em rotas

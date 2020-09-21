@@ -81,9 +81,9 @@
           <div class='search-form'>
             <select class="search-form" name='codProduto' required> 
               <option value="">Selecione uma opção</option>
-              {%for produto in produtos %}
-                  <option value="{{loop.index0}}" {{ "selected" if filters.subject == loop.index }}> 
-                      {{produto}} 
+              {%for produto in itensProdutos %}
+                  <option value="{{produto.cod_produto}}"> 
+                      {{produto.cod_produto}} - {{produto.nome_produto}} 
                   </option>
               {%endfor%}  
             </select>

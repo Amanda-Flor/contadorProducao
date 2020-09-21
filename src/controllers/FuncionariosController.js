@@ -12,6 +12,7 @@ module.exports = {
         const dadosFuncionario = await knex('funcionarios')
         .where({cod_funcionario:usuario})
         .select('funcionarios.*');
+        console.log(usuario)
 
         const{
             cod_funcionario,
@@ -38,12 +39,13 @@ module.exports = {
                 dataNascimentoFuncionario,
                 cepFuncionario,
                 naturalidadeFuncionario,
-                sexoFuncionario,
+                sexo,
                 nivelAcessoFuncionario,
                 cpfFuncionario,
                 emailFuncionario,
                 senhaFuncionario,
             } = req.body;
+            console.log(sexo)
 
             await knex('funcionarios').insert({
                 nome_funcionarios: nomeFuncionario,
@@ -51,7 +53,7 @@ module.exports = {
                 data_nascimento_funcionario: dataNascimentoFuncionario,
                 cep_funcionario:  cepFuncionario,
                 naturalidade_funcionario: naturalidadeFuncionario,
-                sexo_funcionario: sexoFuncionario,
+                sexo_funcionario: sexo,
                 nivel_acesso_funcionario: nivelAcessoFuncionario,
                 cpf_funcionario: cpfFuncionario,
             }) 
@@ -68,8 +70,20 @@ module.exports = {
                 cod_funcionario: codFuncionario,
             })
 
-            // alert("Cadastrado com Sucesso!");
-            return res.render('funcionario.html');
+            //buscar funcionario que foi cadastrado
+            const listaFucionarios = await knex('funcionarios')
+            .select('funcionarios.cod_funcionario')
+             
+            const cod = listaFucionarios[listaFucionarios.length-1].cod_funcionario
+
+            //listar dados do funcionario
+            const funcionario = await knex ('funcionarios')
+            .where({'funcionarios.cod_funcionario':cod})
+            .select('funcionarios.*')
+            
+            const dadosFuncionario = funcionario[0]
+            
+            return res.render('apresentar_funcionario_cadastrado.html', {dadosFuncionario});
 
         } catch (error){
             next(error)

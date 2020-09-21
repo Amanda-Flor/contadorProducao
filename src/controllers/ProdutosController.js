@@ -10,16 +10,10 @@ module.exports = {
     async searchProdutos (req, res){
     
         const itensProdutos = await knex('produtos')
-        .select('produtos.nome_produto');
-        const produtos = []
+        .select('produtos.nome_produto', 'produtos.cod_produto');
 
-        for (var i = 0; i < itensProdutos.length; i++) {
-            for (var j = 0; j < 1; j++) {
-                produtos.push(itensProdutos[i].nome_produto)
-            }
-        }
         
-        return res.render('consulta_produto.html' , {produtos})
+        return res.render('consulta_produto.html' , {itensProdutos})
 
     },
 
@@ -44,7 +38,7 @@ module.exports = {
             email_cliente,
             telefone_cliente,
         } = dadosProduto[0]
-
+        
         return res.render('consulta_produto.html', {cod_produto, nome_produto,materia_prima_produto, quantidade_lote_produto, nome_maquina, nome_cliente, email_cliente, telefone_cliente,})
     },
 
@@ -124,7 +118,7 @@ module.exports = {
 
 
             
-            return res.render('cadastro_produto.html')
+            return res.render('produto.html')
         } catch (error){
             next(error)
         }

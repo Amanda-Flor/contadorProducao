@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PI1A5 - Home</title>
@@ -72,18 +72,22 @@
       <h3>Consulta de Cliente</h3>
       <div class="dashboard">
         <h4>Pesquisa de Cliente</h4>
+        <form id='form-pesquisa' action="/pesquisaCliente" method="POST">
+          <label for="busca">Clientes:</label>
 
-        
-
-        <form action="/pesquisaCliente" method="POST">
-          <label for="busca">Código de Cliente:</label>
-          <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="codCliente" value="{{ cod_cliente }}">
-            <button class="button-search-form" type="submit">
+          <div class='search-form'>
+            <select class="search-form" name='codCliente' required> 
+              <option value="">Selecione uma opção</option>
+              {%for cliente in dadosClientes %}
+                  <option value="{{cliente.cod_cliente}}"> {{cliente.nome_cliente}} </option>
+              {%endfor%}  
+            </select>
+            <button class="button-search-form" type="submit" >
               <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
-          </div>
+          </div>  
         </form>
+
         <h4>Resultado da Pesquisa</h4>
         <form action="">
           <div class="relatorio">

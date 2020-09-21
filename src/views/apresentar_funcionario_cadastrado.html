@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>PI1A5 - Home</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PI1A5 - Home</title>
-
-
-    <link rel="stylesheet" href="/style/main.css">  
-    <link rel="stylesheet" href="/style/form.css">    
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="/style/main.css">
+      <link rel="stylesheet" href="/style/form.css">      
+      <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
   </head>
   <body class="container">
 
@@ -70,68 +68,62 @@
 
     <!--Corpo do site-->
     <div class="section">
-      <h3>Consulta de Máquina</h3>
-      <div class="dashboard">
-        <h4>Pesquisa de Máquina</h4>
-        <form id='form-pesquisa' action="/pesquisaMaquina" method="POST">
-          <label for="busca">Maquina:</label>
+      <h3>Perfil</h3>
 
-          <div class='search-form'>
-            <select class="search-form" name='codMaquina' required> 
-              <option value="">Selecione uma opção</option>
-              {%for maquina in dadosMaquinas %}
-                  <option value="{{maquina.cod_maquina}}"> {{maquina.nome_maquina}} </option>
-              {%endfor%}  
-            </select>
-            <button class="button-search-form" type="submit" >
-              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
-            </button>
-          </div>  
-        </form>
-
-        <h4>Resultado da Pesquisa</h4>
-        <form action="pesquisaMaquina" method="POST">
-          <div class="relatorio">
-            <table class="info">
-              <tr class="thear">
-                <th colspan="2">Dados da Máquina</th> 
+      <!-- Menu do dashboard -->
+      <!-- <div class="menu-section">
+        <a class="botao" href="/CadastroFuncionario">
+          <p class="text-button">Cadastrar</p>
+        </a>
+        <a class="botao" href="/alterarFuncionario">
+          <p class="text-button">Editar</p>
+        </a>
+      </div> -->
+      <div class="dashboard-dadosFuncionario">
+        <h4>Dados do Funcionário</h4>
+        <div class="itens-dashboard">
+          <form action="">
+            <table class="tabela-perfil">
+              <tr>
+                <th class='tabela-perfil'>Nome Completo:</th>
+                <td class='tabela-perfil'>{{dadosFuncionario.nome_funcionarios}}</td>
               </tr>
               <tr>
-                <th class="th-table">Código da Máquina:</th>
-                <td class="td-table">{{ cod_maquina }}</td>
+                <th class='tabela-perfil'>Data de Nascimento:</th>
+                <td class='tabela-perfil'>{{dadosFuncionario.data_nascimento_funcionario}}</td>
               </tr>
               <tr>
-                <th class="th-table">Nome da Máquina:</th>
-                <td class="td-table">{{ nome_maquina }}</td>
+                <th class='tabela-perfil'>CPF:</th>
+                <td class='tabela-perfil'>{{dadosFuncionario.cpf_funcionario}}</td>
               </tr>
               <tr>
-                <th class="th-table">Tipo da Máquina:</th>
-                <td class="td-table">{{ tipo_maquina }}</td>
+                <th class='tabela-perfil'>Gênero:</th>
+                <td class='tabela-perfil'>{{dadosFuncionario.sexo_funcionario}}</td>
               </tr>
               <tr>
-                <th class="th-table">Ciclo:</th>
-                <td class="td-table">{{ ciclo_maquina }}</td>
+                <th class='tabela-perfil'>Telefone:</th>
+                <td class='tabela-perfil'>{{dadosFuncionario.telefone_funcionario}}</td>
               </tr>
               <tr>
-                <th class="th-table">Ciclo em Uso:</th>
-                <td class="td-table">{{ ciclo_uso_maquina }}</td>
+                <th class='tabela-perfil'>CEP residencial:</th>
+                <td class='tabela-perfil'>{{dadosFuncionario.cep_funcionario}}</td>
               </tr>
               <tr>
-                <th class="th-table">Cavidade:</th>
-                <td class="td-table">{{ cavidade_maquina }}</td>
+                <th class='tabela-perfil'>Naturalidade:</th>
+                <td class='tabela-perfil'>{{dadosFuncionario.naturalidade_funcionario}}</td>
               </tr>
               <tr>
-                <th class="th-table">Cavidade em Uso:</th>
-                <td class="td-table">{{ cavidade_uso_maquina }}</td>
+                <th class='tabela-perfil'>Nível de Acesso:</th>
+                <td class='tabela-perfil'>{{dadosFuncionario.nivel_acesso_funcionario}}</td>
               </tr>
             </table>
+          </form>
+          <div class="cod">
+            <label for="cod-funcionario">Código do Funcionário:</label>
+            <p type="text" id="cod-funcionario" name="codFuncionario">{{dadosFuncionario.cod_funcionario}}</p>
           </div>
-  
-          <div class="menu-consulta">
-            <button id="botao-desabilitar" class="botao-form" type="submit">Desabilitar</button>
-            <button id="botao-editar" class="botao-form" type="submit">Editar</button>
-          </div>
-        </form>
+          
+        </div>
         
       </div>
     </div>

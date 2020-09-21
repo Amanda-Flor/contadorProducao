@@ -2,11 +2,21 @@ const knex = require("../database")
 
 
 module.exports = {
-    //Pesquisa Cliente
+
+    //Apresenta Clientes cadastrados
     async search (req, res){
 
-        const{codCliente} = req.body
+        //pesquisando todos os clientes
+        const dadosClientes = await knex('clientes')
+        .select('clientes.cod_cliente', 'clientes.nome_cliente');
         
+
+        return res.render('consulta_cliente.html', { dadosClientes })
+    },
+    //Pesquisa Cliente
+    async searchCliente (req, res){
+
+        const{codCliente} = req.body
 
         const dadosClientes = await knex('clientes')
         .where({cod_cliente:codCliente})    
@@ -43,7 +53,7 @@ module.exports = {
             })
 
             
-            return res.render('cadastro_cliente.html')
+            return res.render('cliente.html')
         } catch (error){
             next(error)
         }

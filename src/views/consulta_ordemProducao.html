@@ -74,14 +74,14 @@
       <h3>Consulta de Ordem de Produção</h3>
       <div class="dashboard">
         <h4>Pesquisa de Ordem de Produção</h4>
-        <form action="/pesquisarOrdemProducao" method="POST">
+        <form action="/CadastroOrdemProducao" method="POST">
           <label for="codProduto">Código da Ordem de Produção:</label>
           <div class='search-form'>
             <select class="search-form" name='codOP' required> 
               <option value="">Selecione uma opção</option>
-              {%for op in ops %}
-                  <option value="{{loop.index0}}" {{ "selected" if filters.subject == loop.index }}> 
-                      {{op}} 
+              {%for op in itensPedido %}
+                  <option value="{{op.cod_ordemProducao}}"> 
+                    {{op.cod_ordemProducao}}
                   </option>
               {%endfor%}  
             </select>
@@ -556,7 +556,7 @@
                 {%for produto in produtos %}
                 <tr>
                   <th class="th-table">Código do Produto {{loop.index}}:</th>
-                  <td class="td-table" value="{{loop.index0}}">{{produto}} </td>
+                  <td class="td-table">{{produto}} </td>
                 </tr>
                 {%endfor%} 
                 <tr>
