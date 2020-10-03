@@ -1,4 +1,6 @@
 const knex = require("../database")
+const ls = require("local-storage")
+const usuario = ls('usuario')
 
 module.exports = {
     async index (req, res){

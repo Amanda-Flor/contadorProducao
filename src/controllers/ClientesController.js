@@ -1,5 +1,6 @@
 const knex = require("../database")
-
+const ls = require("local-storage")
+const usuario = ls('usuario')
 
 module.exports = {
 
@@ -27,11 +28,11 @@ module.exports = {
             nome_cliente,
             email_cliente,
             telefone_cliente,
-            cpnj_cliente
+            cnpj_cliente,
         } = dadosClientes[0]
 
 
-        return res.render('consulta_cliente.html', { cod_cliente, nome_cliente, email_cliente, telefone_cliente, cpnj_cliente })
+        return res.render('consulta_cliente.html', { cod_cliente, nome_cliente, email_cliente, telefone_cliente, cnpj_cliente})
     },
     //Cadastro de Cliente
     async create(req, res, next) {
@@ -49,7 +50,8 @@ module.exports = {
                 nome_cliente: nomeCliente,
                 email_cliente: emailCliente,
                 telefone_cliente: telefoneCliente,
-                cpnj_cliente: cpnjCliente,
+                cnpj_cliente: cpnjCliente,
+                status_cliente: "ativo"
             })
 
             

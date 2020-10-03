@@ -8,6 +8,8 @@
 
 
     <link rel="stylesheet" href="/style/main.css">      
+    <link rel="stylesheet" href="/style/form.css">  
+    <link rel="stylesheet" href="/style/dados.css">  
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
   </head>
   <body class="container">
@@ -68,9 +70,56 @@
     </nav>
 
     <!--Corpo do site-->
-    <section>
-      <p>Página de Produção</p>
-    </section>
+    <div class="section">
+      <!-- <h3>{{data}}</h3> -->
+      <h3>Produção</h3>
+      <div class="dashboard">
+        <h4>Pesquisa de Máquina</h4>
+        <form action="/pesquisaOP" method="POST">
+          <label for="codProduto">Máquina:</label>
+          <div class='search-form'>
+            <select class="search-form" name='codMaquina' required> 
+              <option value="">Selecione uma opção de Máquina:</option>
+              {%for maquina in maquinas %}
+                  <option value="{{maquina.cod_maquina}}"> 
+                    {{maquina.nome_maquina}}
+                  </option>
+              {%endfor%}  
+            </select>
+            <button class="button-search-form" type="submit" >
+              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
+            </button>
+          </div>  
+        </form>
+
+        <div class="body-dashboard">
+          {%for maquina in maquinas %}               
+          <div class="maquina">
+            <h4>{{maquina.nome_maquina}}</h4>
+            <img class="img-producao"src="/img/bloqueado.png" alt="producao">
+            <div class="dadosMaquina">
+              <div class="elementoMaquina">
+                <label for="producao">Produção:</label>
+                <p class="input">PRODUÇÃO</p>
+              </div>
+              <div class="elementoMaquina">
+                <label for="producao">Ciclo:</label>
+                <p class="input">{{maquina.ciclo_uso_maquina}}</p>
+              </div>
+              <div class="elementoMaquina">
+                <label for="producao">Cavidade:</label>
+                <p class="input">{{maquina.cavidade_uso_maquina}}</p>
+              </div>
+              <div class="elementoMaquina">
+                <label for="producao">Produtividade:</label>
+                <p class="input">-</p>
+              </div>
+            </div>
+          </div>
+          {%endfor%} 
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>

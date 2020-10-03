@@ -1,101 +1,108 @@
-CREATE DATABASE contadorproducao;
+//codigo de myslq para ciação das tabelas
 
-CREATE TABLE maquinas(
-    cod_maquina INT(4) AUTO_INCREMENT,
-    nome_maquina VARCHAR(200) NOT NULL,
-    tipo_maquina VARCHAR(200) NOT NULL,
-    cavidade_maquina INT(3) NOT NULL,
-    cavidade_uso_maquina INT(3) NOT NULL,
-    ciclo_maquina INT(4) NOT NULL,
-    ciclo_uso_maquina INT(4) NOT NULL,
-    PRIMARY KEY(cod_maquina)
+----------------------------------------------------------------------------------------------
+CREATE TABLE funcionarios (
+cod_funcionario INT(4) AUTO_INCREMENT,
+nome_funcionarios VARCHAR(500) NOT NULL,
+cpf_funcionario VARCHAR(20) NOT NULL,
+sexo_funcionario VARCHAR(100) NOT NULL,
+naturalidade_funcionario VARCHAR(100) NOT NULL,
+cep_funcionario VARCHAR(20) NOT NULL,
+data_nascimento_funcionario DATE NOT NULL,
+telefone_funcionario VARCHAR(20) NOT NULL,
+nivel_acesso_funcionario VARCHAR(100) NOT NULL,
+status_funcionario VARCHAR(100) NOT NULL,
+PRIMARY KEY(cod_funcionario)
+)
+----------------------------------------------------------------------------------------------
+CREATE TABLE pedidos (
+cod_pedido INT(4) AUTO_INCREMENT,
+data_inicio_pedido DATE NOT NULL,
+status_pedido VARCHAR(100) NOT NULL,
+cod_funcionario INT(4) NOT NULL,
+cod_cliente INT(4) NOT NULL,
+PRIMARY KEY(cod_pedido),
+FOREIGN KEY(cod_funcionario) REFERENCES funcionarios (cod_funcionario),
+FOREIGN KEY(cod_cliente) REFERENCES clientes (cod_cliente)
+)
+----------------------------------------------------------------------------------------------
+CREATE TABLE ordemProducoes (
+cod_ordemProducao INT(4) AUTO_INCREMENT,
+quantidade_dias_OrdemProdução INT(2) NOT NULL,
+status_ordemProducao VARCHAR(100) NOT NULL,
+cod_maquina INT(4) NOT NULL,
+cod_pedido INT(4) NOT NULL,
+cod_produto INT(4) NOT NULL,
+PRIMARY KEY(cod_ordemProducao),
+FOREIGN KEY(cod_maquina) REFERENCES maquinas (cod_maquina),
+FOREIGN KEY(cod_pedido) REFERENCES pedidos (cod_pedido),
+FOREIGN KEY(cod_produto) REFERENCES produtos (cod_produto)
+)
+----------------------------------------------------------------------------------------------
+CREATE TABLE clientes (
+cod_cliente INT(4) AUTO_INCREMENT,
+nome_cliente VARCHAR(500) NOT NULL,
+email_cliente VARCHAR(500) NOT NULL,
+telefone_cliente VARCHAR(20) NOT NULL,
+cnpj_cliente VARCHAR(50) NOT NULL,
+status_cliente VARCHAR(100) NOT NULL,
+PRIMARY KEY(cod_cliente)
+);
+----------------------------------------------------------------------------------------------
+CREATE TABLE produtos (
+cod_produto INT(4) AUTO_INCREMENT,
+nome_produto VARCHAR(500) NOT NULL,
+quantidade_lote_produto INT(4) NOT NULL,
+cod_cliente INT(4) NOT NULL,
+cod_maquina INT(4) NOT NULL,
+status_produto VARCHAR(100) NOT NULL,
+PRIMARY KEY(cod_produto),
+FOREIGN KEY(cod_cliente) REFERENCES clientes (cod_cliente),
+FOREIGN KEY(cod_maquina) REFERENCES maquinas (cod_maquina)
+)
+----------------------------------------------------------------------------------------------
+CREATE TABLE maquinas (
+cod_maquina INT(4) AUTO_INCREMENT,
+nome_maquina VARCHAR(500) NOT NULL,
+tipo_maquina VARCHAR(20) NOT NULL,
+cavidade_maquina INT(4) NOT NULL,
+cavidade_uso_maquina INT(4) NOT NULL,
+ciclo_maquina INT(10) NOT NULL,
+ciclo_uso_maquina INT(10) NOT NULL,
+status_maquina VARCHAR(20) NOT NULL,
+PRIMARY KEY(cod_maquina)
+);
+----------------------------------------------------------------------------------------------
+CREATE TABLE producoes (
+cod_producao INT(4) AUTO_INCREMENT,
+data_inicio_producao DATE NOT NULL,
+data_final_producao DATE,
+video_producao VARCHAR(500) NOT NULL,
+status_producao VARCHAR(20) NOT NULL,
+cod_funcionario INT(4) NOT NULL,
+cod_maquina INT(4) NOT NULL,
+cod_ordemProducao INT(4) NOT NULL,
+PRIMARY KEY(cod_producao),
+FOREIGN KEY(cod_funcionario) REFERENCES funcionarios (cod_funcionario),
+FOREIGN KEY(cod_maquina) REFERENCES maquinas (cod_maquina),
+FOREIGN KEY(cod_ordemProducao) REFERENCES ordemProducoes (cod_ordemProducao)
+)
+
+----------------------------------------------------------------------------------------------
+CREATE TABLE pedidoProdutos (
+cod_produto INT(4) NOT NULL,
+cod_pedido INT(4) NOT NULL,
+quantidade_produto INT(4) NOT NULL,
+rotulagem_produto CHAR(1) NOT NULL,
+FOREIGN KEY(cod_produto) REFERENCES produtos (cod_produto),
+FOREIGN KEY(cod_pedido) REFERENCES pedidos (cod_pedido)
+)
+----------------------------------------------------------------------------------------------
+CREATE TABLE acessos (
+senha_funcionario VARCHAR(100) NOT NULL,
+cod_funcionario INT(4) NOT NULL,
+email_Funcionario VARCHAR(500) NOT NULL,
+PRIMARY KEY(email_funcionario),
+FOREIGN KEY (cod_funcionario) REFERENCES funcionarios(cod_funcionario)
 );
 
-CREATE TABLE clientes(
-    cod_cliente INT(4) AUTO_INCREMENT,
-    nome_cliente VARCHAR(200) NOT NULL,
-    email_cliente VARCHAR(200) NOT NULL,
-    telefone_cliente VARCHAR(20) NOT NULL,
-    cpnj_cliente VARCHAR(100) NOT NULL,
-    PRIMARY KEY(cod_cliente)
-);
-
-CREATE TABLE funcionarios(
-    cod_funcionario INT(4) AUTO_INCREMENT,
-    nome_funcionarios VARCHAR(200) NOT NULL,
-    telefone_funcionario VARCHAR(20) NOT NULL,
-    data_nascimento_funcionario DATE NOT NULL,
-    cep_funcionario VARCHAR(20) NOT NULL,
-    naturalidade_funcionario VARCHAR(200) NOT NULL,
-    sexo_funcionario VARCHAR(100) NOT NULL,
-    nivel_acesso_funcionario VARCHAR(100) NOT NULL,
-    cpf_funcionario VARCHAR(100) NOT NULL,
-    PRIMARY KEY(cod_funcionario)
-);
-
-CREATE TABLE acessos(
-    email_funcionario VARCHAR(500) NOT NULL,
-    senha_funcionario VARCHAR(500) NOT NULL,
-    cod_funcionario INT(4) NOT NULL,
-    PRIMARY KEY (email_funcionario),
-    FOREIGN KEY (cod_funcionario) REFERENCES funcionarios (cod_funcionario)
-);
-
-CREATE TABLE produtos(
-    cod_produto INT(4) AUTO_INCREMENT,
-    nome_produto VARCHAR(500) NOT NULL,
-    materia_prima_produto VARCHAR(500) NOT NULL,
-    quantidade_lote_produto INT(3) NOT NULL,
-    cod_cliente INT(4) NOT NULL,
-    cod_maquina INT(4) NOT NULL,
-    PRIMARY KEY(cod_produto),
-    FOREIGN KEY (cod_cliente) REFERENCES clientes (cod_cliente),
-    FOREIGN KEY (cod_maquina) REFERENCES maquinas (cod_maquina)
-);
-
-CREATE TABLE pedidos(
-    cod_pedido INT(4) AUTO_INCREMENT,
-    data_inicio_pedido DATE NOT NULL,
-    status_pedido VARCHAR(100) NOT NULL,
-    cod_funcionario INT(4) NOT NULL,
-    cod_cliente INT(4) NOT NULL,
-    status VARCHAR(10) NOT NULL,
-    PRIMARY KEY (cod_pedido),
-    FOREIGN KEY (cod_funcionario) REFERENCES funcionarios (cod_funcionario),
-    FOREIGN KEY (cod_cliente) REFERENCES clientes (cod_cliente)
-);
-
-CREATE TABLE ordemProducoes(
-    cod_ordemProducao INT(4) AUTO_INCREMENT,
-    data_inicio_ordemProducao DATE NOT NULL,
-    data_final_ordemProducao DATE NOT NULL,
-    cod_maquina INT(4) NOT NULL,
-    cod_pedido INT(4) NOT NULL,
-    PRIMARY KEY (cod_ordemProducao),
-    FOREIGN KEY (cod_maquina) REFERENCES maquinas (cod_maquina),
-    FOREIGN KEY (cod_pedido) REFERENCES pedidos (cod_pedido)
-);
-
-CREATE TABLE producoes(
-    cod_producao INT(4) AUTO_INCREMENT,
-    data_inicio_producao DATETIME NOT NULL,
-    data_final_producao DATETIME NOT NULL,
-    video_producao VARCHAR(10) NOT NULL,
-    quant_embalagem_producao INT(10) NOT NULL,
-    cod_funcionario INT(4) NOT NULL,
-    cod_ordemProducao INT(4) NOT NULL,
-    cod_maquina INT(4) NOT NULL,
-    PRIMARY KEY (cod_producao),
-    FOREIGN KEY (cod_funcionario) REFERENCES funcionarios (cod_funcionario),
-    FOREIGN KEY (cod_ordemProducao) REFERENCES ordemProducoes (cod_ordemProducao),
-    FOREIGN KEY (cod_maquina) REFERENCES maquinas (cod_maquina)
-);
-
-CREATE TABLE pedido_produtos(
-    cod_produto INT(4) NOT NULL,
-    cod_pedido INT(4) NOT NULL,
-    quantidade_produto INT(10) NOT NULL,
-    rotulagem_produto CHAR NOT NULL,
-    FOREIGN KEY (cod_produto) REFERENCES produtos (cod_produto),
-    FOREIGN KEY (cod_pedido) REFERENCES pedidoS (cod_pedido)
-);

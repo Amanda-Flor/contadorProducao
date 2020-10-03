@@ -24,8 +24,6 @@ nunjucks.configure('src/views', {
     noCache: true
 });
 
-
-
 //notFound
 app.use((req, res, next) => {
     const error = new Error("not Found")

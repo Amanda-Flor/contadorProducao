@@ -153,6 +153,7 @@ table{
 /* botão página consulta */
 .menu-consulta{
     width: 100%;
+    margin: 1rem;
 }
 #botao-desabilitar, #botao-editar{
     margin-left: 0;
@@ -160,4 +161,9 @@ table{
 }
 #botao-desabilitar{
     background-color: #F22B29;
+}
+
+.video_producao{
+    display:block;
+    margin-right: 20rem;
 }

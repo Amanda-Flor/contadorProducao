@@ -8,6 +8,8 @@
 
 
     <link rel="stylesheet" href="/style/main.css">      
+    <link rel="stylesheet" href="/style/form.css">  
+    <link rel="stylesheet" href="/style/dados.css">  
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
   </head>
   <body class="container">
@@ -68,9 +70,87 @@
     </nav>
 
     <!--Corpo do site-->
-    <section>
-      <p>Página de Produção por Máquina</p>
-    </section>
+    <div class="section">
+      <!-- <h3>{{data}}</h3> -->
+      <h3>Produção</h3>
+      <div class="dashboard">
+        <h4>{{producao[0].nome_maquina}}</h4>
+
+        <div class="video_producao">
+          <!-- IMAGEM -->
+          <!-- width="" height="240" controls="controls" autoplay="autoplay" -->
+          <video width="700rem" height="300rem" controls="controls">
+            <source src="/img/producao10.MP4" type="video/mp4">
+            <!-- <object data="" width="320" height="240">
+              <embed width="320" height="240" src="/img/producao10.MP4">
+            </object> -->
+          </video>
+        </div>
+
+        <!-- BOTÃO FINALIZAR E INICIAR -->
+        <div class="menu-consulta">
+          <button id="botao-desabilitar" class="botao-form" type="submit">Finalizar</button>
+          <button id="botao-editar" class="botao-form" type="submit">Iniciar</button>
+        </div>
+        <!-- INFORMAÇÕES DA MÁQUINA -->
+        <div class="dashboard">
+          <div class="dadosMaquina">
+            <div class="elementoMaquina">
+              <label for="producao">Produção:</label>
+              <p class="input">****</p>
+            </div>
+            <div class="elementoMaquina">
+              <label for="producao">Ciclo:</label>
+              <p class="input">{{producao[0].ciclo_uso_maquina}}</p>
+            </div>
+            <div class="elementoMaquina">
+              <label for="producao">Cavidade:</label>
+              <p class="input">{{producao[0].cavidade_uso_maquina}}</p>
+            </div>
+            <div class="elementoMaquina">
+              <label for="producao">Produtividade:</label>
+              <p class="input">****</p>
+            </div>
+          </div>
+
+        </div>
+        <!-- INFORMAÇÕES DA ORDEM DE PRODUÇÃO -->
+        <!-- Tabela com informações sobre a op -->
+        <div class="relatorio">
+          <table class="info">
+            <tr class="thear">
+              <th colspan="2">Relatório da Ordem de Produção</th> 
+            </tr>
+            <tr>
+              <th class="th-table">Número da Ordem de Produção:</th>
+              <td class="td-table">{{producao[0].cod_ordemProducao}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Nome do Produto:</th>
+              <td class="td-table">{{producao[0].nome_produto}} </td>
+            </tr>
+            <tr>
+              <th class="th-table">Quantidade de Dias:</th>
+              <td class="td-table">{{producao[0].quantidade_dias_OrdemProdução}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Máquina:</th>
+              <td class="td-table">{{producao[0].nome_maquina}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Status da Ordem de Produção:</th>
+              <td class="td-table">{{producao[0].status_ordemProducao}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Número do Pedido:</th>
+              <td class="td-table">{{producao[0].cod_pedido}}</td>
+            </tr>
+          </table>
+        </div>
+        <!-- INFORMAÇÕES DA PRODUÇÃO -->
+
+      </div>
+    </div>
 
   </body>
 </html>

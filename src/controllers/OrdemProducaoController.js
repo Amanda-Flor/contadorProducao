@@ -1,5 +1,6 @@
 const knex = require("../database")
 const ls = require("local-storage")
+const usuario = ls('usuario')
 
 module.exports = {
     //Apresenta as ops cadastradas
@@ -9,7 +10,7 @@ module.exports = {
             const itensOP = await knex('ordemproducoes')
             .select('ordemproducoes.cod_ordemProducao');
 
-
+            console.log(itensOP)
             return res.render('consulta_ordemProducao.html', { itensOP })
 
         } catch (error){
@@ -26,32 +27,34 @@ module.exports = {
             const dadosOP = await knex('ordemproducoes')
             .where({'ordemproducoes.cod_ordemProducao':codOP})
             .join('maquinas', 'ordemproducoes.cod_maquina', '=', 'maquinas.cod_maquina')
-            .select('ordemproducoes.cod_ordemProducao', 'ordemproducoes.data_inicio_ordemProducao','ordemproducoes.data_final_ordemProducao', 'maquinas.nome_maquina', 'ordemproducoes.cod_pedido');
+            .join('produtos', 'ordemproducoes.cod_produto', '=', 'produtos.cod_produto')
+            .select('ordemproducoes.cod_ordemProducao', 'ordemproducoes.quantidade_dias_OrdemProdução', 'ordemproducoes.status_ordemProducao','maquinas.nome_maquina', 'ordemproducoes.cod_pedido', 'produtos.nome_produto');
 
             const{
                 cod_ordemProducao,
-                data_inicio_ordemProducao,
-                data_final_ordemProducao,
+                quantidade_dias_OrdemProdução,
+                status_ordemProducao,
                 nome_maquina,
                 cod_pedido,
+                nome_produto,
             } = dadosOP[0]
 
-            const produtosOP = await knex('pedido_produtos')
-            .where({cod_pedido: cod_pedido})
-            .select('pedido_produtos.cod_produto')
+            // const produtosOP = await knex('pedidoprodutos')
+            // .where({cod_pedido: cod_pedido})
+            // .select('pedido_produtos.cod_produto')
 
-            const{
-                cod_produto
-            } = produtosOP
-            const produtos = []
+            // const{
+            //     cod_produto
+            // } = produtosOP
+            // const produtos = []
     
-            for (var i = 0; i < produtosOP.length; i++) {
-                for (var j = 0; j < 1; j++) {
-                    produtos.push(produtosOP[i].cod_produto)
-                }
-            }
+            // for (var i = 0; i < produtosOP.length; i++) {
+            //     for (var j = 0; j < 1; j++) {
+            //         produtos.push(produtosOP[i].cod_produto)
+            //     }
+            // }
 
-            return res.render('consulta_ordemProducao.html', {cod_ordemProducao, data_inicio_ordemProducao, data_final_ordemProducao, nome_maquina, cod_pedido, produtos})
+            return res.render('consulta_ordemProducao.html', {cod_ordemProducao, quantidade_dias_OrdemProdução, status_ordemProducao, nome_maquina, cod_pedido, nome_produto})
         }catch(error){
             next(error)
         }
@@ -80,10 +83,10 @@ module.exports = {
 
             //apresentar produtos relacionados ao pedido selecionado 
                 //Pesquisa produtos do pedido
-            const dadosProduto = await knex('pedido_produtos')
-            .where({'pedido_produtos.cod_pedido':codPedido})
-            .join('produtos', 'produtos.cod_produto', '=', 'pedido_produtos.cod_produto')
-            .select('pedido_produtos.cod_pedido','pedido_produtos.cod_produto', 'produtos.nome_produto', 'pedido_produtos.rotulagem_produto', 'pedido_produtos.quantidade_produto')
+            const dadosProduto = await knex('pedidoprodutos')
+            .where({'pedidoprodutos.cod_pedido':codPedido})
+            .join('produtos', 'produtos.cod_produto', '=', 'pedidoprodutos.cod_produto')
+            .select('pedidoprodutos.cod_pedido','pedidoprodutos.cod_produto', 'produtos.nome_produto', 'pedidoprodutos.rotulagem_produto', 'pedidoprodutos.quantidade_produto')
 
             
             return res.render('cadastro_ordem_producao.html', {dadosProduto})
@@ -119,8 +122,7 @@ module.exports = {
     async finalizarOrdemProducao(req,res,next){
         try {
             const{
-                inicioOP,
-                finalOP,
+                diasOP
             } = req.body
         
             //cod_pedido
@@ -136,8 +138,8 @@ module.exports = {
             const maquina = codMaquina[0]
             //cadastrar op do produto
             await knex('ordemproducoes').insert({
-                data_inicio_ordemProducao: inicioOP,
-                data_final_ordemProducao: finalOP ,
+                quantidade_dias_OrdemProdução: diasOP,
+                status_ordemProducao: 'aberto',
                 cod_maquina: maquina.cod_maquina,
                 cod_pedido: pedido,
                 cod_produto: produto,

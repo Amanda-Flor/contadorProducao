@@ -1,6 +1,6 @@
 const knex = require("../database")
 const ls = require("local-storage")
-
+const usuario = ls('usuario')
 
 
 module.exports = {
@@ -29,7 +29,6 @@ module.exports = {
 
         return res.render('funcionario.html', {cod_funcionario, nome_funcionarios, telefone_funcionario, data_nascimento_funcionario, cep_funcionario, naturalidade_funcionario, sexo_funcionario, nivel_acesso_funcionario, cpf_funcionario,});
     },
-
     //Cadastro Funcionario
     async create(req, res, next) {
         try{
@@ -89,35 +88,76 @@ module.exports = {
             next(error)
         }
     },
+    //Consulta Funcionário
+    async searchFuncionario (req, res, next){
+        try{
+            //pesquisando todos os clientes
+            const dadosFuncionarios = await knex('funcionarios')
+            .select('funcionarios.cod_funcionario', 'funcionarios.nome_funcionarios');
+            
+            
+            return res.render('consulta_funcionario.html', { dadosFuncionarios })
+        }catch(error){
+            console.log("entrei")
+            next(error)
+        }
+        
+    },
+    async searchFuncionarioResp(req, res, next) {
+
+        const{
+            codFuncionario
+        } = req.body
+        const dadosFuncionario = await knex('funcionarios')
+        .where({cod_funcionario:codFuncionario})
+        .select('funcionarios.*');
+        console.log(usuario)
+
+        const{
+            cod_funcionario,
+            nome_funcionarios,
+            telefone_funcionario,
+            data_nascimento_funcionario,
+            cep_funcionario,
+            naturalidade_funcionario,
+            sexo_funcionario,
+            nivel_acesso_funcionario,
+            cpf_funcionario,
+        } = dadosFuncionario[0]
+
+
+        return res.render('consulta_funcionario.html', {cod_funcionario, nome_funcionarios, telefone_funcionario, data_nascimento_funcionario, cep_funcionario, naturalidade_funcionario, sexo_funcionario, nivel_acesso_funcionario, cpf_funcionario,});
+    },
+
     async update(req, res, next) {
         try{
-            const {
-                nome_funcionarios,
-                telefone_funcionario,
-                data_nascimento_funcionario,
-                cep_funcionario,
-                naturalidade_funcionario,
-                sexo_funcionario,
-                nivel_acesso_funcionario,
-                cpf_funcionario,
-            } = req.body
+            // const {
+            //     nome_funcionarios,
+            //     telefone_funcionario,
+            //     data_nascimento_funcionario,
+            //     cep_funcionario,
+            //     naturalidade_funcionario,
+            //     sexo_funcionario,
+            //     nivel_acesso_funcionario,
+            //     cpf_funcionario,
+            // } = req.body
 
-            const {cod_funcionario} = req.params
+            // const {cod_funcionario} = req.params
 
-            await knex("funcionarios")
-            .update({
-                nome_funcionarios,
-                telefone_funcionario,
-                data_nascimento_funcionario,
-                cep_funcionario,
-                naturalidade_funcionario,
-                sexo_funcionario,
-                nivel_acesso_funcionario,
-                cpf_funcionario,
-            })
-            .where({cod_funcionario})
+            // await knex("funcionarios")
+            // .update({
+            //     nome_funcionarios,
+            //     telefone_funcionario,
+            //     data_nascimento_funcionario,
+            //     cep_funcionario,
+            //     naturalidade_funcionario,
+            //     sexo_funcionario,
+            //     nivel_acesso_funcionario,
+            //     cpf_funcionario,
+            // })
+            // .where({cod_funcionario})
 
-            return res.send()
+            return res.render('consulta_funcionario.html');
         } catch (error) {
             next(error)
         }

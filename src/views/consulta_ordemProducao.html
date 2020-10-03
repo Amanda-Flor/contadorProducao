@@ -74,12 +74,12 @@
       <h3>Consulta de Ordem de Produção</h3>
       <div class="dashboard">
         <h4>Pesquisa de Ordem de Produção</h4>
-        <form action="/CadastroOrdemProducao" method="POST">
+        <form action="/pesquisarOrdemProducao" method="POST">
           <label for="codProduto">Código da Ordem de Produção:</label>
           <div class='search-form'>
             <select class="search-form" name='codOP' required> 
               <option value="">Selecione uma opção</option>
-              {%for op in itensPedido %}
+              {%for op in itensOP %}
                   <option value="{{op.cod_ordemProducao}}"> 
                     {{op.cod_ordemProducao}}
                   </option>
@@ -553,26 +553,24 @@
                   <th class="th-table">Número da Ordem de Produção:</th>
                   <td class="td-table">{{cod_ordemProducao}}</td>
                 </tr>
-                {%for produto in produtos %}
                 <tr>
-                  <th class="th-table">Código do Produto {{loop.index}}:</th>
-                  <td class="td-table">{{produto}} </td>
-                </tr>
-                {%endfor%} 
-                <tr>
-                  <th class="th-table">Início:</th>
-                  <td class="td-table">{{data_inicio_ordemProducao}}</td>
+                  <th class="th-table">Nome do Produto:</th>
+                  <td class="td-table">{{nome_produto}} </td>
                 </tr>
                 <tr>
-                  <th class="th-table">Final:</th>
-                  <td class="td-table">{{data_final_ordemProducao}}</td>
+                  <th class="th-table">Quantidade de Dias:</th>
+                  <td class="td-table">{{quantidade_dias_OrdemProdução}}</td>
                 </tr>
                 <tr>
                   <th class="th-table">Máquina:</th>
                   <td class="td-table">{{nome_maquina}}</td>
                 </tr>
                 <tr>
-                  <th class="th-table">Pedido:</th>
+                  <th class="th-table">Status da Ordem de Produção:</th>
+                  <td class="td-table">{{status_ordemProducao}}</td>
+                </tr>
+                <tr>
+                  <th class="th-table">Número do Pedido:</th>
                   <td class="td-table">{{cod_pedido}}</td>
                 </tr>
               </table>

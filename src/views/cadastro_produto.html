@@ -44,7 +44,7 @@
           <img class="img-menu" src="/img/pedido.png" alt="Opção Pedidos">
           <p class="text-menu">Pedidos</p>
         </a>
-        <a class="botao-menu" id="menu-ordemProducao" href="/ordemProducao">
+        <a class="botao-menu" id="menu-ordemProducao" href="/ordem_producao">
           <img class="img-menu" src="/img/ordemProducao.png" alt="Opção Ordem de Produção">
           <p class="text-menu">Ordem de Produção</p>
         </a>
@@ -80,8 +80,8 @@
               <select class="search-form" name='cliente' required> 
                 <option value="">Selecione uma opção</option>
                 {%for cliente in clientes %}
-                <option value="{{loop.index0}}" {{ "selected" if filters.subject == loop.index }}> 
-                    {{cliente}} 
+                <option value="{{cliente. cod_cliente}}"> 
+                    {{cliente.nome_cliente}} 
                 </option>
                 {%endfor%}   
               </select>
@@ -92,8 +92,8 @@
                 <select class="search-form" name='maquina' required> 
                   <option value="">Selecione uma opção</option>
                   {%for maquina in maquinas %}
-                  <option value="{{loop.index0}}" {{ "selected" if filters.subject == loop.index }}> 
-                      {{maquina}} 
+                  <option value="{{maquina.cod_maquina}}"> 
+                      {{maquina.nome_maquina}} 
                   </option>
                   {%endfor%}   
               </select>
@@ -101,10 +101,6 @@
             <div class="campo-form">
               <label for="nome-produto">Nome do Produto:</label>
               <input type="text" id="nome-produto" name="nomeProduto" />
-            </div>
-            <div class="campo-form">
-              <label for="materia-produto">Matéria Prima:</label>
-              <input type="text" id="materia-produto" name="materiaPrima" />
             </div>
             <div class="campo-form">
               <label for="quantLote-produto">Quantidade por Lote:</label>

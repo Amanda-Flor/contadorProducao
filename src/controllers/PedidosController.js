@@ -1,6 +1,6 @@
 const knex = require("../database")
 const ls = require("local-storage")
-
+const usuario = ls('usuario')
 module.exports = {
 
     //Pesquisa Pedido
@@ -30,22 +30,6 @@ module.exports = {
             var cod = String(codCliente)
             ls('cliente', cod)
 
-            //buscar nome do cliente no banco
-            const cliente = await knex('clientes')
-            .where({'clientes.cod_cliente': codCliente})
-            .select('clientes.nome_cliente')
-
-            var nomeCliente = cliente[0].nome_cliente
-
-            //Listar produto
-            const listaProduto = await knex('produtos')
-            .where({'produtos.cod_cliente': codCliente})
-            .select('produtos.nome_produto', 'produtos.cod_produto')
-
-            //Preparar parametro para nomeProduto e tabelaProdutos
-            const nomeProduto = ''
-            const tabelaProdutos = ''
-
             //NOVO PEDIDO
                 //obter data 
             var data = new Date();
@@ -59,14 +43,33 @@ module.exports = {
                 cod_funcionario:usuario,
                 cod_cliente: codCliente,
             })
-                //buscar ultimo cod do pedido
+            //buscar ultimo cod do pedido
             const codigosPedido = await knex('pedidos')
             .select('pedidos.cod_pedido')
             const codPedido = String(codigosPedido[codigosPedido.length-1].cod_pedido)
                 //criar local storage para pedido
             ls('pedido', codPedido)
 
-            return res.render('cadastro_pedido_produtos.html', {nomeCliente, listaProduto, nomeProduto, tabelaProdutos})
+            
+
+            //buscar nome do cliente no banco
+            const cliente = await knex('clientes')
+            .where({'clientes.cod_cliente': codCliente})
+            .select('clientes.nome_cliente')
+
+            var nomeCliente = cliente[0].nome_cliente
+
+                
+            //Listar produto
+            const listaProduto = await knex('produtos')
+            .where({'produtos.cod_cliente': codCliente})
+            .select('produtos.nome_produto', 'produtos.cod_produto')
+
+            // //Preparar parametro para nomeProduto e tabelaProdutos
+            // const nomeProduto = ''
+            // const tabelaProdutos = ''
+
+            return res.render('cadastro_pedido_produtos.html', {nomeCliente, listaProduto})
         }catch(error){
             next(error)
         }
@@ -154,16 +157,16 @@ module.exports = {
                     rotulagem,
                 } = req.body
                 //inserir dados do banco pedido_produtos
-                await knex('pedido_produtos').insert({
+                await knex('pedidoprodutos').insert({
                     cod_produto: produto,
                     cod_pedido: Number(ls('pedido')),
                     quantidade_produto: quantProduto,
                     rotulagem_produto: rotulagem,
                 })
                 //buscar no banco pedido_produtos pelo cod do pedido
-            const tabelaProdutos = await knex('pedido_produtos')
-            .where({'pedido_produtos.cod_pedido': Number(ls('pedido'))})
-            .select('pedido_produtos.*')
+            const tabelaProdutos = await knex('pedidoprodutos')
+            .where({'pedidoprodutos.cod_pedido': Number(ls('pedido'))})
+            .select('pedidoprodutos.*')
 
 
 

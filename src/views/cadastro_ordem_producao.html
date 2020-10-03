@@ -45,7 +45,7 @@
           <img class="img-menu" src="/img/pedido.png" alt="Opção Pedidos">
           <p class="text-menu">Pedidos</p>
         </a>
-        <a class="botao-menu" id="menu-ordemProducao" href="/ordemProducao">
+        <a class="botao-menu" id="menu-ordemProducao" href="/ordem_producao">
           <img class="img-menu" src="/img/ordemProducao.png" alt="Opção Ordem de Produção">
           <p class="text-menu">Ordem de Produção</p>
         </a>
@@ -122,16 +122,10 @@
         <form action="/finalizarOrdemProducao" method="POST">
 
           <div class="infoPedido-op">
-            <div class="campo-form" id="inicio-op">
-              <label for="inicio-op">Inicialização:</label>
-              <input type="date" id="inicio-op" name="inicioOP" />
+            <div class="campo-form" id="diasOP">
+              <label for="diasOP">Dias para produção:</label>
+              <input type="number" id="diasOP" name="diasOP" />
             </div>
-            <div class="campo-form" id="final-op">
-              <label for="final-op">Finalização:</label>
-              <input type="date" id="final-op" name="finalOP"/>
-            </div>
-          </div>
-
           <button class="botao-form" type="submit">Salvar</button>
         </form>
       </div>

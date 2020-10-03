@@ -1,5 +1,7 @@
 const knex = require("../database")
 const { search } = require("./ClientesController")
+const ls = require("local-storage")
+const usuario = ls('usuario')
 
 module.exports = {
     //apresenta as maquinas cadastradas
@@ -54,6 +56,7 @@ module.exports = {
                 ciclo_maquina: cicloMaquina,
                 ciclo_uso_maquina: cicloUsoMaquina,
                 tipo_maquina: tipoMaquina,
+                status_maquina: "parada",
             })
             return res.render('cadastro_maquina.html')
         } catch (error){

@@ -15,13 +15,13 @@ module.exports = {
         // console.log(dadosUsuario)
 
         const{
-            email_funcionario,
+            email_Funcionario,
             senha_funcionario,
             cod_funcionario,
         } = dadosUsuario[0]
 
 
-        if(email_funcionario == email && senha_funcionario == senha){
+        if(email_Funcionario == email && senha_funcionario == senha){
             
             ls('usuario', cod_funcionario)
 
