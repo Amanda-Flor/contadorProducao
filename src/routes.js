@@ -1,5 +1,4 @@
 const express = require('express')
-const app = express()
 const routes = express.Router()
 
 const MaquinasController = require("./controllers/MaquinasController")
@@ -72,8 +71,10 @@ routes
 
 //PRODUCAO
 .get('/producao', ProducoesController.index)
-.post('/pesquisaOP', ProducoesController.producaoOP)
-.post('/criarproducao', ProducoesController.createOP)
+.post('/pesquisaOP', ProducoesController.pesquisaOP)
+.post('/criarproducao', ProducoesController.createProducao)
+.get('/continuarProducao', ProducoesController.continuarProducao)
+.get('/finalizarProducao', ProducoesController.finalizarProducao)
 
 
 //Páginas Gerais
@@ -82,15 +83,5 @@ routes
 .get('/relatorio', function (req, res) {res.render('relatorios.html');})
 .get('/informacoes', function (req, res) {res.render('informacoes.html');})
 
-
-//rota de teste
-.get('/123', (req, res) => {
-
-    const spawn = require("child_process").spawn;
-    const pythonProcess = spawn('python',["teste.py"]);
-    console.log(pythonProcess)
-    res.render('maquina_sem_op.html');
-
-})
 
 module.exports = routes

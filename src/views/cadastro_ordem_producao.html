@@ -99,7 +99,7 @@
             <select class="search-form" name='codProduto' required> 
               <option value="">Selecione uma opção</option>
               {%for produto in dadosProduto %}
-                  <option value="{{produto.cod_produto}}"> 
+                  <option value="{{produto.cod_pedidoProdutos}}"> 
                     {{produto.cod_produto}} - {{produto.nome_produto}} - {{produto.rotulagem_produto}} - {{produto.quantidade_produto}}
                   </option>
               {%endfor%}  

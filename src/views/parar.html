@@ -74,13 +74,13 @@
       <!-- <h3>{{data}}</h3> -->
       <h3>Produção</h3>
       <div class="dashboard">
-        <h4>{{producao[0].nome_maquina}}</h4>
+        <h4>{{producao.nome_maquina}}</h4>
 
         <div class="video_producao">
           <!-- IMAGEM -->
           <!-- width="" height="240" controls="controls" autoplay="autoplay" -->
-          <video width="700rem" height="300rem" controls="controls">
-            <source src="/img/producao10.MP4" type="video/mp4">
+          <video width="700rem" height="300rem" controls="controls" autoplay="autoplay">
+            <source src="#" type="video/mp4">
             <!-- <object data="" width="320" height="240">
               <embed width="320" height="240" src="/img/producao10.MP4">
             </object> -->
@@ -89,27 +89,26 @@
 
         <!-- BOTÃO FINALIZAR E INICIAR -->
         <div class="menu-consulta">
-          <button id="botao-desabilitar" class="botao-form" type="submit">Finalizar</button>
-          <button id="botao-editar" class="botao-form" type="submit">Iniciar</button>
+          <button id="botao-desabilitar" class="botao-form" type="submit">PARAR</button>
         </div>
         <!-- INFORMAÇÕES DA MÁQUINA -->
         <div class="dashboard">
           <div class="dadosMaquina">
             <div class="elementoMaquina">
               <label for="producao">Produção:</label>
-              <p class="input">****</p>
+              <p class="input">{{producao.quantidade_producao}}</p>
             </div>
             <div class="elementoMaquina">
               <label for="producao">Ciclo:</label>
-              <p class="input">{{producao[0].ciclo_uso_maquina}}</p>
+              <p class="input">{{producao.ciclo_uso_maquina}}</p>
             </div>
             <div class="elementoMaquina">
               <label for="producao">Cavidade:</label>
-              <p class="input">{{producao[0].cavidade_uso_maquina}}</p>
+              <p class="input">{{producao.cavidade_uso_maquina}}</p>
             </div>
             <div class="elementoMaquina">
               <label for="producao">Produtividade:</label>
-              <p class="input">****</p>
+              <p class="input"> - </p>
             </div>
           </div>
 
@@ -123,32 +122,51 @@
             </tr>
             <tr>
               <th class="th-table">Número da Ordem de Produção:</th>
-              <td class="td-table">{{producao[0].cod_ordemProducao}}</td>
+              <td class="td-table">{{producao.cod_ordemProducao}}</td>
             </tr>
             <tr>
               <th class="th-table">Nome do Produto:</th>
-              <td class="td-table">{{producao[0].nome_produto}} </td>
+              <td class="td-table">{{producao.nome_produto}} </td>
             </tr>
             <tr>
               <th class="th-table">Quantidade de Dias:</th>
-              <td class="td-table">{{producao[0].quantidade_dias_OrdemProdução}}</td>
+              <td class="td-table">{{producao.quantidade_dias_OrdemProdução}}</td>
             </tr>
             <tr>
-              <th class="th-table">Máquina:</th>
-              <td class="td-table">{{producao[0].nome_maquina}}</td>
-            </tr>
-            <tr>
-              <th class="th-table">Status da Ordem de Produção:</th>
-              <td class="td-table">{{producao[0].status_ordemProducao}}</td>
+              <th class="th-table">Status da Produção:</th>
+              <td class="td-table">{{producao.status_producao}}</td>
             </tr>
             <tr>
               <th class="th-table">Número do Pedido:</th>
-              <td class="td-table">{{producao[0].cod_pedido}}</td>
+              <td class="td-table">{{producao.cod_pedido}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Número do Pedido:</th>
+              <td class="td-table">{{producao.cod_pedido}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Número do Cliente:</th>
+              <td class="td-table">{{producao.nome_cliente}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Quantidade pedida:</th>
+              <td class="td-table">{{producao.quantidade_produto}}</td>
             </tr>
           </table>
         </div>
         <!-- INFORMAÇÕES DA PRODUÇÃO -->
-
+          <div>
+            <table>
+              <tr>
+                <th class="th-table">Dia de Início:</th>
+                <th class="td-table">{{producao.data_inicio_producao}}</th>
+              </tr>
+              <tr>
+                <th class="th-table">Dia de Finalização:</th>
+                <th class="td-table"> - </th>
+              </tr>
+            </table>
+          </div>
       </div>
     </div>
 

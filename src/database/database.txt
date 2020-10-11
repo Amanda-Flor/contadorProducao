@@ -31,12 +31,10 @@ cod_ordemProducao INT(4) AUTO_INCREMENT,
 quantidade_dias_OrdemProdução INT(2) NOT NULL,
 status_ordemProducao VARCHAR(100) NOT NULL,
 cod_maquina INT(4) NOT NULL,
-cod_pedido INT(4) NOT NULL,
-cod_produto INT(4) NOT NULL,
+cod_pedidoProdutos INT(4) NOT NULL,
 PRIMARY KEY(cod_ordemProducao),
 FOREIGN KEY(cod_maquina) REFERENCES maquinas (cod_maquina),
-FOREIGN KEY(cod_pedido) REFERENCES pedidos (cod_pedido),
-FOREIGN KEY(cod_produto) REFERENCES produtos (cod_produto)
+FOREIGN KEY(cod_pedidoProdutos) REFERENCES pedidoProdutos (cod_pedidoProdutos),
 )
 ----------------------------------------------------------------------------------------------
 CREATE TABLE clientes (
@@ -90,10 +88,12 @@ FOREIGN KEY(cod_ordemProducao) REFERENCES ordemProducoes (cod_ordemProducao)
 
 ----------------------------------------------------------------------------------------------
 CREATE TABLE pedidoProdutos (
+cod_pedidoProdutos INT(4) AUTO_INCREMENT,
 cod_produto INT(4) NOT NULL,
 cod_pedido INT(4) NOT NULL,
 quantidade_produto INT(4) NOT NULL,
 rotulagem_produto CHAR(1) NOT NULL,
+PRIMARY KEY(cod_pedidoProdutos),
 FOREIGN KEY(cod_produto) REFERENCES produtos (cod_produto),
 FOREIGN KEY(cod_pedido) REFERENCES pedidos (cod_pedido)
 )
@@ -105,4 +105,4 @@ email_Funcionario VARCHAR(500) NOT NULL,
 PRIMARY KEY(email_funcionario),
 FOREIGN KEY (cod_funcionario) REFERENCES funcionarios(cod_funcionario)
 );
-
++-------------+------------+--------------------+------------------

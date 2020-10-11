@@ -80,7 +80,7 @@
           <div class='search-form'>
             <select class="search-form" name='codOP' required> 
               <option value="">Selecione uma opção:</option>
-              {%for op in opsMaquina %}
+              {%for op in opsAberto %}
                   <option value="{{op.cod_ordemProducao}}"> 
                     Ordem de Produção:{{op.cod_ordemProducao}}
                   </option>
