@@ -12,7 +12,6 @@ module.exports = {
         const dadosFuncionario = await knex('funcionarios')
         .where({cod_funcionario:usuario})
         .select('funcionarios.*');
-        console.log(usuario)
 
         const{
             cod_funcionario,
@@ -44,7 +43,6 @@ module.exports = {
                 emailFuncionario,
                 senhaFuncionario,
             } = req.body;
-            console.log(sexo)
 
             await knex('funcionarios').insert({
                 nome_funcionarios: nomeFuncionario,
@@ -55,6 +53,7 @@ module.exports = {
                 sexo_funcionario: sexo,
                 nivel_acesso_funcionario: nivelAcessoFuncionario,
                 cpf_funcionario: cpfFuncionario,
+                status_funcionario: 'ativo'
             }) 
 
             const acessoFuncionario = await knex('funcionarios')
@@ -62,7 +61,6 @@ module.exports = {
             .select('funcionarios.cod_funcionario');
             const codFuncionario = acessoFuncionario[0].cod_funcionario;
             
-            console.log(codFuncionario)
             await knex('acessos').insert({
                 email_funcionario: emailFuncionario,
                 senha_funcionario: senhaFuncionario,
@@ -92,41 +90,36 @@ module.exports = {
     async searchFuncionario (req, res, next){
         try{
             //pesquisando todos os clientes
-            const dadosFuncionarios = await knex('funcionarios')
+            const dadosFuncionario = await knex('funcionarios')
             .select('funcionarios.cod_funcionario', 'funcionarios.nome_funcionarios');
             
-            
-            return res.render('consulta_funcionario.html', { dadosFuncionarios })
+            return res.render('consulta_funcionario.html', { dadosFuncionario })
         }catch(error){
-            console.log("entrei")
             next(error)
         }
         
     },
     async searchFuncionarioResp(req, res, next) {
 
-        const{
-            codFuncionario
-        } = req.body
+        const{codFuncionario} = req.body
         const dadosFuncionario = await knex('funcionarios')
-        .where({cod_funcionario:codFuncionario})
+        .where({'cod_funcionario':codFuncionario})    
         .select('funcionarios.*');
-        console.log(usuario)
 
         const{
             cod_funcionario,
-            nome_funcionarios,
-            telefone_funcionario,
-            data_nascimento_funcionario,
-            cep_funcionario,
-            naturalidade_funcionario,
-            sexo_funcionario,
-            nivel_acesso_funcionario,
-            cpf_funcionario,
+            nome_funcionarios, 
+            cpf_funcionario, 
+            sexo_funcionario, 
+            naturalidade_funcionario, 
+            cep_funcionario, 
+            data_nascimento_funcionario, 
+            telefone_funcionario, 
+            nivel_acesso_funcionario, 
+            status_funcionario
         } = dadosFuncionario[0]
 
-
-        return res.render('consulta_funcionario.html', {cod_funcionario, nome_funcionarios, telefone_funcionario, data_nascimento_funcionario, cep_funcionario, naturalidade_funcionario, sexo_funcionario, nivel_acesso_funcionario, cpf_funcionario,});
+        return res.render('consulta_funcionario.html', {cod_funcionario,nome_funcionarios,cpf_funcionario, sexo_funcionario,naturalidade_funcionario, cep_funcionario, data_nascimento_funcionario,telefone_funcionario, nivel_acesso_funcionario,status_funcionario});
     },
 
     async update(req, res, next) {

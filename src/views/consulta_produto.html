@@ -95,55 +95,58 @@
         </form>
         
         <h4>Resultado da Pesquisa</h4>
-        <form action="/pequisaProduto">
-          <div class="relatorio">
-            <table class="info">
-              <tr class="thear">
-                <th colspan="2">Dados do Produto</th> 
-              </tr>
-              <tr>
-                <th class="th-table">Código do Produto:</th>
-                <td class="td-table">{{cod_produto}}</td>
-              </tr>
-              <tr>
-                <th class="th-table">Nome do Produto:</th>
-                <td class="td-table">{{nome_produto}}</td>
-              </tr>
-              <tr>
-                <th class="th-table">Quantidade por Lote:</th>
-                <td class="td-table">{{quantidade_lote_produto}}</td>
-              </tr>
-              <tr>
-                <td class="td-table" colspan="2"> </td>
-              </tr>
-              <tr>
-                <th class="th-table">Máquina Produtora:</th>
-                <td class="td-table">{{nome_maquina}}</td>
-              </tr>
-              <tr>
-                <td class="td-table" colspan="2"> </td>
-              </tr>
-              <tr>
-                <th class="th-table">Nome do Cliente:</th>
-                <td class="td-table">{{nome_cliente}}</td>
-              </tr>
-              <tr>
-                <th class="th-table">Email:</th>
-                <td class="td-table">{{email_cliente}}</td>
-              </tr>
-              <tr>
-                <th class="th-table">Telefone:</th>
-                <td class="td-table">{{telefone_cliente}}</td>
-              </tr>
-            </table>
-          </div>
-  
-          <div class="menu-consulta">
-            <button id="botao-desabilitar" class="botao-form" type="submit">Desabilitar</button>
+        <div class="relatorio">
+          <table class="info">
+            <tr class="thear">
+              <th colspan="2">Dados do Produto</th> 
+            </tr>
+            <tr>
+              <th class="th-table">Código do Produto:</th>
+              <td class="td-table">{{cod_produto}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Nome do Produto:</th>
+              <td class="td-table">{{nome_produto}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Quantidade por Lote:</th>
+              <td class="td-table">{{quantidade_lote_produto}}</td>
+            </tr>
+            <tr>
+              <td class="td-table" colspan="2"> </td>
+            </tr>
+            <tr>
+              <th class="th-table">Máquina Produtora:</th>
+              <td class="td-table">{{nome_maquina}}</td>
+            </tr>
+            <tr>
+              <td class="td-table" colspan="2"> </td>
+            </tr>
+            <tr>
+              <th class="th-table">Nome do Cliente:</th>
+              <td class="td-table">{{nome_cliente}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Email:</th>
+              <td class="td-table">{{email_cliente}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Telefone:</th>
+              <td class="td-table">{{telefone_cliente}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="menu-consulta">
+          <form action="/ApresentarProduto" method="POST">
+            <input name ='codProduto' type="hidden" value="{{cod_produto}}">
             <button id="botao-editar" class="botao-form" type="submit">Editar</button>
-          </div>
-        </form>
-        
+          </form>
+          
+          <form action="/removerProduto" method="POST">
+            <input name ='codProduto' type="hidden" value="{{cod_produto}}">
+            <button id="botao-desabilitar" class="botao-form" type="submit">Desabilitar</button>
+          </form>
+        </div>
       </div>
     </div>
 

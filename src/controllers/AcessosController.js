@@ -12,7 +12,6 @@ module.exports = {
         const dadosUsuario = await knex('acessos')
         .where({email_funcionario:email})
         .select('acessos.*');
-        // console.log(dadosUsuario)
 
         const{
             email_Funcionario,

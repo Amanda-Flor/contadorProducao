@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PI1A5 - Home</title>
 
-    <link rel="stylesheet" href="/style/main.css">      
     <link rel="stylesheet" href="/style/form.css">
+    <link rel="stylesheet" href="/style/main.css">      
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
   </head>
   <body class="container">
@@ -69,68 +69,43 @@
 
     <!--Corpo do site-->
     <div class="section">
-      <h3>Consulta de Cliente</h3>
-      <div class="dashboard">
-        <h4>Pesquisa de Cliente</h4>
-        <form id='form-pesquisa' action="/pesquisaCliente" method="POST">
-          <label for="busca">Clientes:</label>
-
-          <div class='search-form'>
-            <select class="search-form" name='codCliente' required> 
-              <option value="">Selecione uma opção</option>
-              {%for cliente in dadosClientes %}
-                  <option value="{{cliente.cod_cliente}}"> {{cliente.cod_cliente}} - {{cliente.nome_cliente}} </option>
-              {%endfor%}  
-            </select>
-            <button class="button-search-form" type="submit" >
-              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
-            </button>
-          </div>  
-        </form>
-
-        <h4>Resultado da Pesquisa</h4>
-        <form action="">
-          <div class="relatorio">
-            <table class="info">
-              <tr class="thear">
-                <th colspan="2">Dados do Cliente</th> 
-              </tr>
-              <tr>
-                <th class="th-table">Código do Cliente:</th>
-                <td class="td-table">{{ cod_cliente }}</td>
-              </tr>
-              <tr>
-                <th class="th-table">Nome do Cliente:</th>
-                <td class="td-table">{{ nome_cliente }}</td>
-              </tr>
-              <tr>
-                <th class="th-table">E-mail:</th>
-                <td class="td-table">{{ email_cliente }}</td>
-              </tr>
-              <tr>
-                <th class="th-table">Telefone:</th>
-                <td class="td-table">{{ telefone_cliente }}</td>
-              </tr>
-              <tr>
-                <th class="th-table">CNPJ:</th>
-                <td class="td-table">{{ cnpj_cliente }}</td>
-              </tr>
-            </table>
-          </div>
-        </form>
-        <div class="menu-consulta">
-          <form action="/ApresentarProduto" method="POST">
-            <input name ='codCliente' type="hidden" value="{{cod_cliente}}">
-            <button id="botao-editar" class="botao-form" type="submit">Editar</button>
-          </form>
+      <h3>Cadastro de Cliente</h3>
+      <div class="formulario">
+        <h4>Dados do Cliente</h4>
+        
+        <form action="/Atualizarprodutos" method="POST">
+            <div class="campo-form">
+                <label for="codCliente">Código do Cliente:</label>
+                <input type="text" id="codCliente" name="codCliente" value="{{infoCliente.cod_cliente}}" required readonly/>
+            </div>
+            <div class="campo-form">
+                <label for="cnpj-cliente">CNPJ:</label>
+                <input type="text" id="cnpj-cliente" name="cpnjCliente" value='{{infoCliente.cnpj_cliente}}' required />
+            </div>
+            <div class="campo-form">
+                <label for="nome-cliente">Nome da Empresa:</label>
+                <input type="text" id="nome-cliente" name="nomeCliente" value='{{infoCliente.nome_cliente}}' required/>
+            </div>
+            <div class="campo-form">
+                <label for="telefone-cliente">Telefone:</label>
+                <input type="text" id="telefone-cliente" name="telefoneCliente" value='{{infoCliente.telefone_cliente}}' required/>
+            </div>
+            <div class="campo-form">
+                <label for="email-cliente">Email:</label>
+                <input type="email" id="email-cliente" name="emailCliente" value='{{infoCliente.email_cliente}}' required/>
+            </div>
           
-          <form action="/removerProduto" method="POST">
-            <input name ='codCliente' type="hidden" value="{{cod_cliente}}">
-            <button id="botao-desabilitar" class="botao-form" type="submit">Desabilitar</button>
-          </form>
-        </div>
+          <button class="botao-form" type="submit">Atualizar</button>
+        </form>
       </div>
+
+      <footer>
+        <div class="informativo">
+          Importante! <br> Preencha todos os dados 
+        </div>
+      </footer>
     </div>
 
   </body>
+  <script src="/stripts/adicionarCampo.js"></script>
 </html>

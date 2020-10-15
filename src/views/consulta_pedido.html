@@ -72,15 +72,21 @@
     <div class="section">
       <h3>Consulta de Pedidos</h3>
       <div class="dashboard">
-        <h4>Pesquisa de Pedidos Aprovados</h4>
-        <form action="/pesquisaPedido" method="POST">
-          <label for="busca">Código do Pedido:</label>
-          <div class="search-form">
-            <input class="input-search-form" type="search" id="busca" name="codPedido">
-            <button class="button-search-form" type="submit">
+        <h4>Pesquisa de Pedidos</h4>
+        <form id='form-pesquisa' action="/apresentaPedido" method="POST">
+          <label for="busca">Pedido:</label>
+
+          <div class='search-form'>
+            <select class="search-form" name='codPedido' required> 
+              <option value="">Selecione uma opção</option>
+              {%for pedido in dadosPedido %}
+                  <option value="{{pedido.cod_pedido}}"> Pedido:{{pedido.cod_pedido}} de {{pedido.nome_cliente}} </option>
+              {%endfor%}  
+            </select>
+            <button class="button-search-form" type="submit" >
               <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
             </button>
-          </div>
+          </div>  
         </form>
         <h4>Resultado da Pesquisa</h4>
         <form action="">
@@ -91,30 +97,23 @@
               </tr>
               <tr>
                 <th class="th-table">Número do Pedido:</th>
-                <td class="td-table">{{ CodPedido }}</td>
+                <td class="td-table">{{ cod_pedido }}</td>
               </tr>
               <tr>
-                <th class="th-table">Empresa:</th>
-                <td class="td-table">{{ nomeEmpresa }}</td>
+                <th class="th-table">Cliente:</th>
+                <td class="td-table">{{ nome_cliente }}</td>
               </tr>
               <tr>
-                <th class="th-table">E-mail:</th>
-                <td class="td-table">{{ emailEmpresa }}</td>
+                <th class="th-table">Data do pedido:</th>
+                <td class="td-table">{{ data_inicio_pedido }}</td>
               </tr>
               <tr>
-                <th class="th-table">Telefone:</th>
-                <td class="td-table">{{ telefoneEmpresa }}</td>
+                <th class="th-table">Status do Pedido:</th>
+                <td class="td-table">{{ status_pedido }}</td>
               </tr>
               <tr>
-                <td class="td-table" colspan="2"> </td>
-              </tr>
-              <tr>
-                <th class="th-table">Responsável:</th>
-                <td class="td-table">{{ nomeFuncionrio }}</td>
-              </tr>
-              <tr>
-                <th class="th-table">Data de Solicitação:</th>
-                <td class="td-table">{{ dataSolicitacao }}</td>
+                <th class="th-table">Solicitante:</th>
+                <td class="td-table">{{ nome_funcionarios }}</td>
               </tr>
             </table>
   
@@ -122,28 +121,13 @@
               <tr>
                 <th>Cód. do Produto</th>
                 <th>Nome do Produto</th>
-                <th>Rotulagem</th>
-                <th>Quantidade</th>
-                <th> </th>
               </tr>
+              {%for pedido in dadosPedidoProdutos %}
               <tr>
-                <td>{{codProduto[0]}}</td>
-                <td>{{nomeProduto[0]}}</td>
-                <td>{{rotulagem[0]}}</td>
-                <td>{{quantidade[0]}}</td>
-                <td>
-                  <div class="botao-relatorio">Excluir</div>
-                </td>
+                <td>{{pedido.nome_produto}}</td>
+                <td>{{pedido.quantidade_produto}}</td>
               </tr>
-              <tr>
-                <td>{{codProduto[1]}}</td>
-                <td>{{nomeProduto[1]}}</td>
-                <td>{{rotulagem[1]}}</td>
-                <td>{{quantidade[1]}}</td>
-                <td>
-                  <div class="botao-relatorio">Excluir</div>
-                </td>
-              </tr>
+              {%endfor%}
             </table>
           </div>
   

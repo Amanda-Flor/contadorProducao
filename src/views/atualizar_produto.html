@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PI1A5 - Home</title>
 
-    <link rel="stylesheet" href="/style/main.css">      
     <link rel="stylesheet" href="/style/form.css">
+    <link rel="stylesheet" href="/style/main.css">      
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
   </head>
   <body class="container">
@@ -69,67 +69,50 @@
 
     <!--Corpo do site-->
     <div class="section">
-      <h3>Consulta de Cliente</h3>
-      <div class="dashboard">
-        <h4>Pesquisa de Cliente</h4>
-        <form id='form-pesquisa' action="/pesquisaCliente" method="POST">
-          <label for="busca">Clientes:</label>
+      <h3>Cadastro de Produto</h3>
+      <div class="formulario">
+        <h4>Dados do Produto</h4>
+        <div class="campo-form">
+          <form id='form-pesquisa' action="/Atualizarprodutos" method="POST">
+            <div class="campo-form">
+                <label for="nome-produto">Código do Produto:</label>
+                <input type="text" id="nome-produto" name="codProduto" value='{{infoProdutos.cod_produto}}' readonly/>
+            </div>
 
-          <div class='search-form'>
-            <select class="search-form" name='codCliente' required> 
-              <option value="">Selecione uma opção</option>
-              {%for cliente in dadosClientes %}
-                  <option value="{{cliente.cod_cliente}}"> {{cliente.cod_cliente}} - {{cliente.nome_cliente}} </option>
-              {%endfor%}  
-            </select>
-            <button class="button-search-form" type="submit" >
-              <img class="img-menu" src="/img/lupa.png" alt="pesquisar">
-            </button>
-          </div>  
-        </form>
+            <div class="campo-form">
+                <label for="nome-produto">Cliente:</label>
+                <input type="text" id="nome-produto" name="codCliente" value='{{infoProdutos.nome_cliente}}' readonly/>
+            </div>
+            <label for="maquina">Máquina produtora:</label>
+            <div class='search-form'>
+                <select class="search-form" name='maquina' required> 
+                    <option value="{{infoProdutos.cod_maquina}}">{{infoProdutos.nome_maquina}}</option>
+                    {%for maquina in maquinas %}
+                    <option value="{{maquina.cod_maquina}}"> 
+                        {{maquina.nome_maquina}} 
+                    </option>
+                  {%endfor%}   
+                </select>
+            </div> 
 
-        <h4>Resultado da Pesquisa</h4>
-        <form action="">
-          <div class="relatorio">
-            <table class="info">
-              <tr class="thear">
-                <th colspan="2">Dados do Cliente</th> 
-              </tr>
-              <tr>
-                <th class="th-table">Código do Cliente:</th>
-                <td class="td-table">{{ cod_cliente }}</td>
-              </tr>
-              <tr>
-                <th class="th-table">Nome do Cliente:</th>
-                <td class="td-table">{{ nome_cliente }}</td>
-              </tr>
-              <tr>
-                <th class="th-table">E-mail:</th>
-                <td class="td-table">{{ email_cliente }}</td>
-              </tr>
-              <tr>
-                <th class="th-table">Telefone:</th>
-                <td class="td-table">{{ telefone_cliente }}</td>
-              </tr>
-              <tr>
-                <th class="th-table">CNPJ:</th>
-                <td class="td-table">{{ cnpj_cliente }}</td>
-              </tr>
-            </table>
-          </div>
-        </form>
-        <div class="menu-consulta">
-          <form action="/ApresentarProduto" method="POST">
-            <input name ='codCliente' type="hidden" value="{{cod_cliente}}">
-            <button id="botao-editar" class="botao-form" type="submit">Editar</button>
-          </form>
-          
-          <form action="/removerProduto" method="POST">
-            <input name ='codCliente' type="hidden" value="{{cod_cliente}}">
-            <button id="botao-desabilitar" class="botao-form" type="submit">Desabilitar</button>
+            <div class="campo-form">
+              <label for="nome-produto">Nome do Produto:</label>
+              <input type="text" id="nome-produto" name="nomeProduto" value="{{infoProdutos.nome_produto}}"/>
+            </div>
+            <div class="campo-form">
+              <label for="quantLote-produto">Quantidade por Lote:</label>
+              <input type="text" id="quantLote-produto" name="quantLote"  value="{{infoProdutos.quantidade_lote_produto}}"/>
+            </div> 
+            <button class="botao-form" type="submit">Atualizar</button>
           </form>
         </div>
       </div>
+
+      <footer>
+        <div class="informativo">
+          Importante! <br> Preencha todos os dados 
+        </div>
+      </footer>
     </div>
 
   </body>

@@ -76,50 +76,51 @@
           <p class="text-button">Cadastrar</p>
         </a>
         <a class="botao" href="/ConsultaFuncionario">
-          <p class="text-button">Editar</p>
+          <p class="text-button">Consultar</p>
         </a>
       </div>
       <div class="dashboard-dadosFuncionario">
         <h4>Dados do Funcionário</h4>
         <div class="itens-dashboard">
-          <form action="">
-            <table class="tabela-perfil">
-              <tr>
-                <th class='tabela-perfil'>Nome Completo:</th>
-                <td class='tabela-perfil'>{{nome_funcionarios}}</td>
-              </tr>
-              <tr>
-                <th class='tabela-perfil'>Data de Nascimento:</th>
-                <td class='tabela-perfil'>{{data_nascimento_funcionario}}</td>
-              </tr>
-              <tr>
-                <th class='tabela-perfil'>CPF:</th>
-                <td class='tabela-perfil'>{{cpf_funcionario}}</td>
-              </tr>
-              <tr>
-                <th class='tabela-perfil'>Gênero:</th>
-                <td class='tabela-perfil'>{{sexo_funcionario}}</td>
-              </tr>
-              <tr>
-                <th class='tabela-perfil'>Telefone:</th>
-                <td class='tabela-perfil'>{{telefone_funcionario}}</td>
-              </tr>
-              <tr>
-                <th class='tabela-perfil'>CEP residencial:</th>
-                <td class='tabela-perfil'>{{cep_funcionario}}</td>
-              </tr>
-              <tr>
-                <th class='tabela-perfil'>Naturalidade:</th>
-                <td class='tabela-perfil'>{{naturalidade_funcionario}}</td>
-              </tr>
-              <tr>
-                <th class='tabela-perfil'>Nível de Acesso:</th>
-                <td class='tabela-perfil'>{{nivel_acesso_funcionario}}</td>
-              </tr>
-            </table>
-          </form>
+          <table class="info">
+            <tr class="thear">
+              <th colspan="2">Dados do Funcionário</th> 
+            </tr>
+            <tr>
+              <th class="th-table">Nome Completo:</th>
+              <td class="td-table">{{nome_funcionarios}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Data de Nascimento:</th>
+              <td class="td-table">{{data_nascimento_funcionario}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">CPF:</th>
+              <td class="td-table">{{cpf_funcionario}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Gênero:</th>
+              <td class="td-table">{{sexo_funcionario}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Telefone:</th>
+              <td class="td-table">{{telefone_funcionario}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">CEP residencial:</th>
+              <td class="td-table">{{cep_funcionario}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Naturalidade:</th>
+              <td class="td-table">{{naturalidade_funcionario}}</td>
+            </tr>
+            <tr>
+              <th class="th-table">Nível de Acesso:</th>
+              <td class="td-table">{{nivel_acesso_funcionario}}</td>
+            </tr>
+          </table>
           <div class="cod">
-            <label for="cod-funcionario">Código do Funcionário:</label>
+            <label id='label-cod-funcionario'for="cod-funcionario">Código do Funcionário:</label>
             <p type="text" id="cod-funcionario" name="codFuncionario">{{cod_funcionario}}</p>
           </div>
           

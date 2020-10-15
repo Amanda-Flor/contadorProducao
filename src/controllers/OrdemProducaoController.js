@@ -20,7 +20,6 @@ module.exports = {
         try{
             
             const{codOP} = req.body
-            console.log(codOP)
 
             const dadosOP = await knex('ordemproducoes')
             .where({'ordemproducoes.cod_ordemProducao':codOP})
@@ -43,7 +42,6 @@ module.exports = {
             next(error)
         }
     },
-
     async searchPedido(req, res, next) {
         try{
 

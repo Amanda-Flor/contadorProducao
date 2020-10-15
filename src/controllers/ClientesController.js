@@ -9,6 +9,7 @@ module.exports = {
 
         //pesquisando todos os clientes
         const dadosClientes = await knex('clientes')
+        .where({'clientes.status_cliente': 'ativo'})
         .select('clientes.cod_cliente', 'clientes.nome_cliente');
         
 
@@ -20,7 +21,7 @@ module.exports = {
         const{codCliente} = req.body
 
         const dadosClientes = await knex('clientes')
-        .where({cod_cliente:codCliente})    
+        .where({'cod_cliente':codCliente})    
         .select('clientes.*');
 
         const {
@@ -60,40 +61,66 @@ module.exports = {
             next(error)
         }
     },
-    async update(req, res, next) {
+
+
+    
+    async apresentarInfoCliente(req, res, next) {
         try{
             const {
-                nome_cliente,
-                email_cliente,
-                telefone_cliente,
-                cpnj_cliente
+                codCliente
             } = req.body
 
-            const {cod_cliente} = req.params
+            const dadosCliente = await knex('clientes')
+            .where({cod_cliente:codCliente})
+            .select(
+                'clientes.cod_cliente',
+                'clientes.nome_cliente',
+                'clientes.email_cliente',
+                'clientes.telefone_cliente',
+                'clientes.cnpj_cliente'
+            )
+            const infoCliente = dadosCliente[0]
+            console.log(infoCliente)
+            return res.render('atualizar_cliente.html', {infoCliente})
+        } catch (error) {
+            next(error)
+        }
+    },
+    async update(req, res, next){
+        try {
+            const {
+                codCliente,
+                cpnjCliente,
+                nomeCliente,
+                telefoneCliente,
+                emailCliente,
+            } = req.body
 
             await knex("clientes")
+            .where({cod_cliente:codCliente })
             .update({
-                nome_cliente,
-                email_cliente,
-                telefone_cliente,
-                cpnj_cliente
+                nome_cliente: nomeCliente,
+                email_cliente: emailCliente,
+                telefone_cliente: telefoneCliente,
+                cnpj_cliente: cpnjCliente
             })
-            .where({cod_cliente})
+            return res.render('cliente.html')
 
-            return res.send()
         } catch (error) {
             next(error)
         }
     },
     async delete(req, res, next){
         try{
-            const{cod_cliente} = req.params
+            const{codCliente} = req.body
 
             await knex("clientes")
-            .where({cod_cliente})
-            .del()
+            .where({cod_cliente: codCliente})
+            .update({
+                status_cliente: 'desativado',
+            })
 
-            return res.send()
+            return res.render('cliente.html')
         } catch (error){
             next(error)
         }

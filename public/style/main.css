@@ -53,6 +53,10 @@ nav{
     border-radius: 8px;
     vertical-align: middle;
 }
+.botao-menu:hover{
+    transition: 0.5s;
+    background-color: #CFF0F2;
+}
 a{
     text-decoration: none;
 }
@@ -153,6 +157,11 @@ h3{
     height: 2rem;
     margin-right: 0.2rem;
 }
+.botao:hover{
+    transition: 0.5s;
+    background-color: #2C9AA0;
+
+}
 .text-button{
     font-size: 1rem;
     font-family: Poppins;
@@ -184,11 +193,25 @@ h4 {
 }
 
 .cod{
-    margin-right: 5rem;
+    background-color: #32AFB5;
+    font-size: 1.2rem;
+    font-family: Poppins;
+    color: #32264D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    width: 12rem;
+    height: 3rem;
+    margin: 1rem;
+    padding: 0.5rem;
 }
-
+#cod-funcionario{
+    text-align: center;
+}
+#label-cod-funcionario{
+    color: #FFFFFF;
+}
 /*formatação de tabela do perfil*/
-
+/* 
 .tabela-perfil{
     width: 20rem;
     height: 1.5rem;
@@ -199,7 +222,7 @@ h4 {
     color:  #32264D;
     border: none;
     margin-left: 4rem;
-}
+} */
 
 .body-dashboard{
     display: grid;

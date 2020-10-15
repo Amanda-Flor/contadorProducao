@@ -154,6 +154,7 @@ table{
 .menu-consulta{
     width: 100%;
     margin: 1rem;
+    display: flex;
 }
 #botao-desabilitar, #botao-editar{
     margin-left: 0;

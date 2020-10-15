@@ -21,11 +21,12 @@ routes
 //CRUD Cliente
 .get('/cliente', function (req, res) {res.render('cliente.html');})
 .get('/CadastroCliente', function (req, res) {res.render('cadastro_cliente.html');})
-//.get('/ConsultaCliente', function (req, res) {res.render('consulta_cliente.html');})
 .get('/ConsultaCliente', ClientesController.search)
 .post('/pesquisaCliente', ClientesController.searchCliente)
 .post('/salvarCliente', ClientesController.create)
-
+.post('/ApresentarProduto', ClientesController.apresentarInfoCliente)
+.post('/Atualizarprodutos', ClientesController.update)
+.post('/removerProduto', ClientesController.delete)
 
 
 //CRUD Maquinas
@@ -41,7 +42,7 @@ routes
 .get('/funcionario', FuncionariosController.search)
 .post('/salvarFuncionario', FuncionariosController.create)
 .get('/ConsultaFuncionario', FuncionariosController.searchFuncionario)
-.get('/apresentarFuncionario', FuncionariosController.search)
+.post('/apresentarFuncionario', FuncionariosController.searchFuncionarioResp)
 
 
 //CRUD Produtos
@@ -50,6 +51,9 @@ routes
 .post('/salvarProduto', ProdutosController.create)
 .post('/pesquisaProduto', ProdutosController.searchProduto)
 .get('/ConsultarProduto', ProdutosController.searchProdutos)
+.post('/ApresentarProduto', ProdutosController.apresentarInfoProdutos)
+.post('/Atualizarprodutos', ProdutosController.update)
+.post('/removerProduto', ProdutosController.delete)
 
 //CRUD OP
 .get('/ordem_producao', function (req, res) {res.render('ordem_producao.html');})
@@ -62,12 +66,14 @@ routes
 
 //CRUD Pedidos
 .get('/pedido', function (req, res) {res.render('pedido.html');})
-//.get('/ConsultaPedido', function (req, res) {res.render('consulta_pedido.html');})
 .get('/CadastroPedido', PedidosController.seachCliente)
 .post('/listarProduto', PedidosController.listarProduto)
 .post('/escolherProduto', PedidosController.escolherProduto)
 .post('/criarPedidoProduto', PedidosController.criarPedidoProduto)
 .post('/pesquisaPedido', PedidosController.search)
+.get('/ConsultaPedido', PedidosController.search)
+.post('/apresentaPedido', PedidosController.searchPedido)
+
 
 //PRODUCAO
 .get('/producao', ProducoesController.index)

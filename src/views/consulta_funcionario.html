@@ -73,14 +73,13 @@
       <h3>Consulta de Máquina</h3>
       <div class="dashboard">
         <h4>Pesquisa de Funcionários</h4>
-        <form id='form-pesquisa' action="#" method="POST">
+        <form id='form-pesquisa' action="/apresentarFuncionario" method="POST">
           <label for="busca">Funcionário:</label>
-
           <div class='search-form'>
             <select class="search-form" name='codFuncionario' required>
               <option value="">Selecione uma opção</option>
-              {%for funcionario in dadosFuncionarios %}
-                  <option value="{{funcionarios.cod_funcionario}}"> {{funcionario.cod_funcionario}} - {{funcionario.nome_funcionarios}} </option>
+              {%for funcionario in dadosFuncionario %}
+                  <option value="{{funcionario.cod_funcionario}}"> {{funcionario.cod_funcionario}} - {{funcionario.nome_funcionarios}} </option>
               {%endfor%}
             </select>
             <button class="button-search-form" type="submit" >
@@ -135,38 +134,45 @@
         </form> -->
                 <div class="itens-dashboard">
                     <form action="">
-                      <table class="tabela">
-                        <tr>
-                          <th class='tabela'>Nome Completo:</th>
-                          <td class='tabela'>{{nome_funcionarios}}</td>
+                      <table class="info">
+                        <tr class="thear">
+                          <th colspan="2">Dados do Funcionário</th> 
                         </tr>
                         <tr>
-                          <th class='tabela'>Data de Nascimento:</th>
-                          <td class='tabela'>{{data_nascimento_funcionario}}</td>
+                          <th class="th-table">Nome Completo:</th>
+                          <td class="td-table">{{nome_funcionarios}}</td>
                         </tr>
                         <tr>
-                          <th class='tabela'>CPF:</th>
-                          <td class='tabela'>{{cpf_funcionario}}</td>
+                          <th class="th-table">Data de Nascimento:</th>
+                          <td class="td-table">{{data_nascimento_funcionario}}</td>
                         </tr>
                         <tr>
-                          <th class='tabela'>Gênero:</th>
-                          <td class='tabela'>{{sexo_funcionario}}</td>
+                          <th class="th-table">CPF:</th>
+                          <td class="td-table">{{cpf_funcionario}}</td>
                         </tr>
                         <tr>
-                          <th class='tabela'>Telefone:</th>
-                          <td class='tabela'>{{telefone_funcionario}}</td>
+                          <th class="th-table">Gênero:</th>
+                          <td class="td-table">{{sexo_funcionario}}</td>
                         </tr>
                         <tr>
-                          <th class='tabela'>CEP residencial:</th>
-                          <td class='tabela-perfil'>{{cep_funcionario}}</td>
+                          <th class="th-table">Telefone:</th>
+                          <td class="td-table">{{telefone_funcionario}}</td>
                         </tr>
                         <tr>
-                          <th class='tabela'>Naturalidade:</th>
-                          <td class='tabela'>{{naturalidade_funcionario}}</td>
+                          <th class="th-table">CEP residencial:</th>
+                          <td class="td-table">{{cep_funcionario}}</td>
                         </tr>
                         <tr>
-                          <th class='tabela'>Nível de Acesso:</th>
-                          <td class='tabela'>{{nivel_acesso_funcionario}}</td>
+                          <th class="th-table">Naturalidade:</th>
+                          <td class="td-table">{{naturalidade_funcionario}}</td>
+                        </tr>
+                        <tr>
+                          <th class="th-table">Status do Funcionário:</th>
+                          <td class="td-table">{{status_funcionario}}</td>
+                        </tr>
+                        <tr>
+                          <th class="th-table">Nível de Acesso:</th>
+                          <td class="td-table">{{nivel_acesso_funcionario}}</td>
                         </tr>
                       </table>
                     </form>

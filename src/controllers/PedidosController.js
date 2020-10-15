@@ -180,40 +180,46 @@ module.exports = {
 
 
 
-
-    
     async search (req, res){
+
+        //pesquisando todos os clientes
+        const dadosPedido = await knex('pedidos')
+        .join('clientes', 'pedidos.cod_cliente', '=', 'clientes.cod_cliente')
+        .select('pedidos.cod_pedido', 'clientes.nome_cliente');
+        
+
+        return res.render('consulta_pedido.html', { dadosPedido })
+    },
+    
+    async searchPedido (req, res){
 
         const{codPedido} = req.body
 
         const dadosPedido = await knex('pedidos')
-        .where({cod_pedido:codPedido})
-        .select('pedidos.*');
-
-        // const{
-        //     cod_pedido,
-        //     quantidade_produto_pedido,
-        //     rotulagem_pedido,
-        //     data_inicio_pedido,
-        //     status_pedido,
-        //     cod_funcionario,
-        //     cod_cliente,
-        //     status
-        // } = dadosPedido[0]
-
-
-        const dadosProdutosPedido = await knex('pedido_produtos')
-        .where({cod_pedido:codPedido})
-        .select('pedido_produtos.*')
+        .where({'cod_pedido':codPedido})
+        .join('funcionarios', 'pedidos.cod_funcionario', '=', 'pedidos.cod_funcionario')
+        .join('clientes', 'pedidos.cod_cliente', '=', 'clientes.cod_cliente')
+        .select('pedidos.*', 'clientes.nome_cliente', 'funcionarios.nome_funcionarios');
 
         const{
-            cod_produto,
             cod_pedido,
-        } = dadosProdutosPedido[0]
+            data_inicio_pedido,
+            status_pedido,
+            nome_cliente,
+            nome_funcionarios,
+        } = dadosPedido[0]
 
+        console.log(dadosPedido[0])
 
+        //consulta de produtos do pedido
+        const dadosPedidoProdutos = await knex('pedidoprodutos')
+        .where({'cod_pedido':codPedido})
+        .join('produtos', 'pedidoprodutos.cod_produto', '=', 'produtos.cod_produto')
+        .select('pedidoprodutos.cod_pedidoProdutos', 'produtos.nome_produto', 'pedidoprodutos.quantidade_produto')
 
-        return res.render('consulta_pedido.html', )
+        console.log(dadosPedido[0])
+        
+        return res.render('consulta_pedido.html', {cod_pedido, data_inicio_pedido, status_pedido, nome_cliente, nome_funcionarios, dadosPedidoProdutos})
     },
     async update(req, res, next) {
         try{
