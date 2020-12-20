@@ -4,7 +4,7 @@ const usuario = ls('usuario')
 
 module.exports = {
     async index (req, res){
-        const results = await knex("pedido_produtos")
+        const results = await knex("pedidoProdutos")
 
         return res.json(results)
     },
@@ -14,7 +14,7 @@ module.exports = {
                 cod_produto,
                 cod_pedido
             } = req.body
-            await knex('pedido_produtos').insert({
+            await knex('pedidoProdutos').insert({
                 cod_produto,
                 cod_pedido
             })
@@ -32,7 +32,7 @@ module.exports = {
 
             const {cod_produto} = req.params
 
-            await knex("pedido_produtos")
+            await knex("pedidoProdutos")
             .update({
                 cod_pedido
             })
@@ -47,7 +47,7 @@ module.exports = {
         try{
             const{cod_produto} = req.params
 
-            await knex("pedido_produtos")
+            await knex("pedidoProdutos")
             .where({cod_produto})
             .del()
 

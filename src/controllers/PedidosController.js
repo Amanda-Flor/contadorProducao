@@ -157,16 +157,16 @@ module.exports = {
                     rotulagem,
                 } = req.body
                 //inserir dados do banco pedido_produtos
-                await knex('pedidoprodutos').insert({
+                await knex('pedidoProdutos').insert({
                     cod_produto: produto,
                     cod_pedido: Number(ls('pedido')),
                     quantidade_produto: quantProduto,
                     rotulagem_produto: rotulagem,
                 })
                 //buscar no banco pedido_produtos pelo cod do pedido
-            const tabelaProdutos = await knex('pedidoprodutos')
-            .where({'pedidoprodutos.cod_pedido': Number(ls('pedido'))})
-            .select('pedidoprodutos.*')
+            const tabelaProdutos = await knex('pedidoProdutos')
+            .where({'pedidoProdutos.cod_pedido': Number(ls('pedido'))})
+            .select('pedidoProdutos.*')
 
 
 

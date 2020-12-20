@@ -42,16 +42,17 @@ module.exports = {
             const {
                 nomeMaquina,
                 tipoMaquina,
-                cavidadeMaquina,
+                cavidadeDeMaquina,
                 cavidadeUsoMaquina,
                 cicloMaquina,
                 cicloUsoMaquina,
             } = req.body;
+            console.log(cavidadeDeMaquina)
 
             await knex('maquinas').insert({
                 nome_maquina: nomeMaquina,
                 tipo_maquina:tipoMaquina,
-                cavidade_maquina: cavidadeMaquina,
+                cavidade_maquina: cavidadeDeMaquina,
                 cavidade_uso_maquina: cavidadeUsoMaquina,
                 ciclo_maquina: cicloMaquina,
                 ciclo_uso_maquina: cicloUsoMaquina,

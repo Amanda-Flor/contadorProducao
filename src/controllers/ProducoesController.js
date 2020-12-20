@@ -23,19 +23,19 @@ module.exports = {
 
             if(statusMaquina[0].status_maquina == 'em produção'){
 
-                const ops = await knex('ordemproducoes')
-                .where({'ordemproducoes.cod_maquina': statusMaquina[0].cod_maquina})
-                .where({'ordemproducoes.status_ordemProducao': 'em produção'})
-                .select('ordemproducoes.cod_ordemProducao');
+                const ops = await knex('ordemProducoes')
+                .where({'ordemProducoes.cod_maquina': statusMaquina[0].cod_maquina})
+                .where({'ordemProducoes.status_ordemProducao': 'em produção'})
+                .select('ordemProducoes.cod_ordemProducao');
 
-                const infoOP = await knex('ordemproducoes')
-                .where({'ordemproducoes.cod_ordemProducao': ops[0].cod_ordemProducao})
-                .join('maquinas', 'ordemproducoes.cod_maquina', '=', 'maquinas.cod_maquina')
-                .join('pedidoProdutos', 'ordemproducoes.cod_pedidoProdutos', '=', 'pedidoProdutos.cod_pedidoProdutos')
+                const infoOP = await knex('ordemProducoes')
+                .where({'ordemProducoes.cod_ordemProducao': ops[0].cod_ordemProducao})
+                .join('maquinas', 'ordemProducoes.cod_maquina', '=', 'maquinas.cod_maquina')
+                .join('pedidoProdutos', 'ordemProducoes.cod_pedidoProdutos', '=', 'pedidoProdutos.cod_pedidoProdutos')
                 .join('produtos', 'pedidoProdutos.cod_produto', '=', 'produtos.cod_produto')
                 .join('pedidos', 'pedidoProdutos.cod_pedido', '=', 'pedidos.cod_pedido')
                 .join('clientes', 'clientes.cod_cliente', '=', 'produtos.cod_cliente')
-                .join('producoes', 'producoes.cod_ordemProducao', '=', 'ordemproducoes.cod_ordemProducao')
+                .join('producoes', 'producoes.cod_ordemProducao', '=', 'ordemProducoes.cod_ordemProducao')
                 .select(
                     'producoes.cod_producao',
                     'producoes.quantidade_producao',
@@ -44,8 +44,8 @@ module.exports = {
                     'maquinas.nome_maquina',
                     'maquinas.cavidade_uso_maquina',
                     'maquinas.ciclo_uso_maquina',
-                    'ordemproducoes.cod_ordemProducao',
-                    'ordemproducoes.quantidade_dias_OrdemProdução',
+                    'ordemProducoes.cod_ordemProducao',
+                    'ordemProducoes.quantidade_dias_OrdemProdução',
                     'produtos.nome_produto',
                     'pedidos.cod_pedido',
                     'clientes.nome_cliente',
@@ -57,10 +57,10 @@ module.exports = {
                 return res.render("producao_continuar.html", {infoProducao})
             }else{
                 //consulta de op de maquinas paradas
-                const opsAberto = await knex('ordemproducoes')
-                .where({'ordemproducoes.cod_maquina': codMaquina})
-                .where({'ordemproducoes.status_ordemProducao': 'aberto'})
-                .select('ordemproducoes.cod_ordemProducao');
+                const opsAberto = await knex('ordemProducoes')
+                .where({'ordemProducoes.cod_maquina': codMaquina})
+                .where({'ordemProducoes.status_ordemProducao': 'aberto'})
+                .select('ordemProducoes.cod_ordemProducao');
 
                 if(opsAberto.length == []){
                     return res.render('maquina_sem_op.html')
@@ -80,10 +80,10 @@ module.exports = {
 
             ls('op', String(codOP))
             //BUSCA cod_maquina
-            const codMaquina = await knex('ordemproducoes')
-            .where({'ordemproducoes.cod_ordemProducao': codOP})
-            .join('pedidoProdutos', 'ordemproducoes.cod_pedidoProdutos', '=', 'pedidoProdutos.cod_pedidoProdutos')
-            .select('ordemproducoes.cod_maquina')
+            const codMaquina = await knex('ordemProducoes')
+            .where({'ordemProducoes.cod_ordemProducao': codOP})
+            .join('pedidoProdutos', 'ordemProducoes.cod_pedidoProdutos', '=', 'pedidoProdutos.cod_pedidoProdutos')
+            .select('ordemProducoes.cod_maquina')
             //BUSCA cod_ordemProducao
             const op = Number(codOP)
             //BUSCA cod_funcionario
@@ -94,8 +94,6 @@ module.exports = {
             //CRIAR A PRODUÇÃO ANTES DE ENTRAR NO PYTHON
             await knex('producoes').insert({
                 data_inicio_producao: data,
-                data_final_producao: '0000-00-00',
-                video_producao:'producao10.mp4',
                 status_producao: 'em produção',
                 cod_funcionario: usuario,
                 cod_maquina: codMaquina[0].cod_maquina,
@@ -104,7 +102,7 @@ module.exports = {
             })
 
             //ALTERANDO STATUS DA ORDEM DE PRODUÇÃO
-            await knex("ordemproducoes")
+            await knex("ordemProducoes")
             .where({'cod_ordemProducao': op})
             .update({'status_ordemProducao': 'em produção'})
 
@@ -114,14 +112,14 @@ module.exports = {
             .update({'status_maquina': 'em produção'})
 
             //preparar parametro da producao
-            const infoOP = await knex('ordemproducoes')
-                .where({'ordemproducoes.cod_ordemProducao': op})
-                .join('maquinas', 'ordemproducoes.cod_maquina', '=', 'maquinas.cod_maquina')
-                .join('pedidoProdutos', 'ordemproducoes.cod_pedidoProdutos', '=', 'pedidoProdutos.cod_pedidoProdutos')
+            const infoOP = await knex('ordemProducoes')
+                .where({'ordemProducoes.cod_ordemProducao': op})
+                .join('maquinas', 'ordemProducoes.cod_maquina', '=', 'maquinas.cod_maquina')
+                .join('pedidoProdutos', 'ordemProducoes.cod_pedidoProdutos', '=', 'pedidoProdutos.cod_pedidoProdutos')
                 .join('produtos', 'pedidoProdutos.cod_produto', '=', 'produtos.cod_produto')
                 .join('pedidos', 'pedidoProdutos.cod_pedido', '=', 'pedidos.cod_pedido')
                 .join('clientes', 'clientes.cod_cliente', '=', 'produtos.cod_cliente')
-                .join('producoes', 'producoes.cod_ordemProducao', '=', 'ordemproducoes.cod_ordemProducao')
+                .join('producoes', 'producoes.cod_ordemProducao', '=', 'ordemProducoes.cod_ordemProducao')
                 .select(
                     'producoes.cod_producao',
                     'producoes.quantidade_producao',
@@ -130,8 +128,8 @@ module.exports = {
                     'maquinas.nome_maquina',
                     'maquinas.cavidade_uso_maquina',
                     'maquinas.ciclo_uso_maquina',
-                    'ordemproducoes.cod_ordemProducao',
-                    'ordemproducoes.quantidade_dias_OrdemProdução',
+                    'ordemProducoes.cod_ordemProducao',
+                    'ordemProducoes.quantidade_dias_OrdemProdução',
                     'produtos.nome_produto',
                     'pedidos.cod_pedido',
                     'clientes.nome_cliente',
@@ -149,14 +147,14 @@ module.exports = {
         try {            
             const op = Number(ls('op'))
             
-            const infoOP = await knex('ordemproducoes')
-                .where({'ordemproducoes.cod_ordemProducao': op})
-                .join('maquinas', 'ordemproducoes.cod_maquina', '=', 'maquinas.cod_maquina')
-                .join('pedidoProdutos', 'ordemproducoes.cod_pedidoProdutos', '=', 'pedidoProdutos.cod_pedidoProdutos')
+            const infoOP = await knex('ordemProducoes')
+                .where({'ordemProducoes.cod_ordemProducao': op})
+                .join('maquinas', 'ordemProducoes.cod_maquina', '=', 'maquinas.cod_maquina')
+                .join('pedidoProdutos', 'ordemProducoes.cod_pedidoProdutos', '=', 'pedidoProdutos.cod_pedidoProdutos')
                 .join('produtos', 'pedidoProdutos.cod_produto', '=', 'produtos.cod_produto')
                 .join('pedidos', 'pedidoProdutos.cod_pedido', '=', 'pedidos.cod_pedido')
                 .join('clientes', 'clientes.cod_cliente', '=', 'produtos.cod_cliente')
-                .join('producoes', 'producoes.cod_ordemProducao', '=', 'ordemproducoes.cod_ordemProducao')
+                .join('producoes', 'producoes.cod_ordemProducao', '=', 'ordemProducoes.cod_ordemProducao')
                 .select(
                     'producoes.cod_producao',
                     'producoes.quantidade_producao',
@@ -165,8 +163,8 @@ module.exports = {
                     'maquinas.nome_maquina',
                     'maquinas.cavidade_uso_maquina',
                     'maquinas.ciclo_uso_maquina',
-                    'ordemproducoes.cod_ordemProducao',
-                    'ordemproducoes.quantidade_dias_OrdemProdução',
+                    'ordemProducoes.cod_ordemProducao',
+                    'ordemProducoes.quantidade_dias_OrdemProdução',
                     'produtos.nome_produto',
                     'pedidos.cod_pedido',
                     'clientes.nome_cliente',
@@ -207,9 +205,9 @@ module.exports = {
             var data = new Date();
             console.log(op)
 
-            const producao = await knex('ordemproducoes')
-            .where({'ordemproducoes.cod_ordemProducao': op})
-            .join('producoes', 'ordemproducoes.cod_ordemProducao', '=', 'producoes.cod_ordemProducao')
+            const producao = await knex('ordemProducoes')
+            .where({'ordemProducoes.cod_ordemProducao': op})
+            .join('producoes', 'ordemProducoes.cod_ordemProducao', '=', 'producoes.cod_ordemProducao')
             .select('producoes.cod_producao')
             
             //ALTERANDO STATUS DA PRODUÇÃO E DATA FINAL
@@ -219,7 +217,7 @@ module.exports = {
             .update({'data_final_producao': data})
 
             //ALTERANDO STATUS DA ORDEM DE PRODUÇÃO
-            await knex("ordemproducoes")
+            await knex("ordemProducoes")
             .where({'cod_ordemProducao': op})
             .update({'status_ordemProducao': 'finalizada'})
 

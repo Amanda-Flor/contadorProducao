@@ -21,17 +21,17 @@ module.exports = {
             
             const{codOP} = req.body
 
-            const dadosOP = await knex('ordemproducoes')
-            .where({'ordemproducoes.cod_ordemProducao':codOP})
-            .join('maquinas', 'ordemproducoes.cod_maquina', '=', 'maquinas.cod_maquina')
-            .join('pedidoProdutos', 'pedidoProdutos.cod_pedidoProdutos', '=', 'ordemproducoes.cod_pedidoProdutos')
+            const dadosOP = await knex('ordemProducoes')
+            .where({'ordemProducoes.cod_ordemProducao':codOP})
+            .join('maquinas', 'ordemProducoes.cod_maquina', '=', 'maquinas.cod_maquina')
+            .join('pedidoProdutos', 'pedidoProdutos.cod_pedidoProdutos', '=', 'ordempPoducoes.cod_pedidoProdutos')
             .join('produtos', 'pedidoProdutos.cod_produto', '=', 'produtos.cod_produto')
             .select(
-                'ordemproducoes.cod_ordemProducao', 
-                'ordemproducoes.quantidade_dias_OrdemProdução', 
-                'ordemproducoes.status_ordemProducao',
+                'ordemProducoes.cod_ordemProducao', 
+                'ordemProducoes.quantidade_dias_OrdemProdução', 
+                'ordemProducoes.status_ordemProducao',
                 'maquinas.nome_maquina', 
-                'ordemproducoes.cod_pedidoProdutos', 
+                'ordemProducoes.cod_pedidoProdutos', 
                 'produtos.nome_produto',
                 'pedidoProdutos.quantidade_produto'
             );
@@ -112,7 +112,7 @@ module.exports = {
             const maquina = codMaquina[0]
 
             //cadastrar op do produto
-            await knex('ordemproducoes').insert({
+            await knex('ordemProducoes').insert({
                 quantidade_dias_OrdemProdução: diasOP,
                 status_ordemProducao: 'aberto',
                 cod_maquina: maquina.cod_maquina,
