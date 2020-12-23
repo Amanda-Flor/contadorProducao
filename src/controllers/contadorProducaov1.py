@@ -6,8 +6,8 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="",
+    user="cp",
+    password="Af061297@",
     database="contadorproducao"
 )
 
@@ -15,8 +15,8 @@ mydb = mysql.connector.connect(
 current_date = date.today()
 
 #ARGUMENTOS SENDO ATRUBUIDOS A VARIÁVEIS, RECEBIDOS DO NODE.JS
-cod_producao = sys.argv[1]
-
+#cod_producao = sys.argv[1]
+cod_producao = 1
 #INSERÇÃO DE PRODUÇÃO NO BANCO DE DADOS
 mycursor = mydb.cursor()
 
@@ -32,10 +32,10 @@ def center(x, y, w, h):
 
 
 #ATRIBUIÇÃO DO VÍDEO PARA UMA VARIÁVEL PARA ABRI-LO
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("C:/Users/amand/Desktop/Repositorios/contadorProducao/public/img/producao10.mp4")
 
 #CRIAÇÃO DE OBJETO PARA RETIRAR O FUNDO NA IMAGEM 
-#fgbg = cv2.createBackgroundSubtractorMOG2()
+fgbg = cv2.createBackgroundSubtractorMOG2()
 
 #FAZ A DETEÇÃO DO OBJETO NOS FRAMES FAZENDO UM CAMINHO POR ONDE ELE PASSOU
 detects = []
@@ -57,7 +57,8 @@ xy5 = ((posL+offset), 20)
 xy6 = ((posL+offset), 470)
 
 #INICIALIZADOR DA VARIAVEL DE CONTÁGEM
-total = int(sys.argv[2])
+#total = int(sys.argv[2])
+total = 0
 direita = 0
 esquerda = 0
 
@@ -181,6 +182,7 @@ while 1:
 
     #EXIBIÇÃO DO FRAME DO VÍDEO
     cv2.imshow("frame", frame)
+
     #CONDIÇÃO PARA PARAR O LAÇO INFINITO
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break

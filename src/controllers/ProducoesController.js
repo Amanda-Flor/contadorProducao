@@ -179,18 +179,36 @@ module.exports = {
                 return res.render('producao_finalizar.html', {infoProducao})
             }else{
                 //inicializar programa em python
-                var PythonShell = require('python-shell')
-                    var options = {
-                        mode: 'text',
-                        encoding: 'utf8',
-                        pythonOptions: ['-u'],
-                        scriptPath: 'src/controllers/',
-                        args: [infoProducao.cod_producao, infoProducao.quantidade_producao]
-                    };
-                    //EXECUTAR SCRIP NO PYTHON
-                    PythonShell.run('contadorProducao.py', options, function(error, resultado){
-                        //console.log(resultado)
-                    });
+
+                var PythonShell = require('python-shell');
+
+                var options = {
+                mode: 'text',
+                encoding: 'utf8',
+                pythonOptions: ['-u'],
+                scriptPath: 'src/controllers',
+                args: [infoProducao.cod_producao, infoProducao.quantidade_producao]
+                };
+
+                var test = new PythonShell('contadorProducao.py', options);
+                test.on('message', function(message) {
+                console.log(message);
+                });
+
+                
+
+                // var PythonShell = require('python-shell')
+                //     var options = {
+                //         mode: 'text',
+                //         encoding: 'utf8',
+                //         pythonOptions: ['-u'],
+                //         scriptPath: 'src/controllers',
+                //         args: [infoProducao.cod_producao, infoProducao.quantidade_producao]
+                //     };
+                //     //EXECUTAR SCRIP NO PYTHON
+                //     PythonShell.run('contadorProducao_copy.py', options, function(error, resultado){
+                //         console.log("oi")
+                //     });
 
                 return res.render('producao_verificar.html', {infoProducao})
             }
